@@ -1,227 +1,273 @@
 ---
-import Layout from "../layouts/Layout.astro";
 
-const featured = [
-  {
-    title: "Artwork",
-    text: "Original paintings, pastels, and colored-pencil works.",
-    href: "/artwork",
-    image: "/images/cbm_about.jpg",
-  },
-  {
-    title: "About Margaret",
-    text: "Learn about Margaret McKeough Breighner and her work.",
-    href: "/about",
-    image: "/images/cbm_about.jpg",
-  },
-  {
-    title: "Lessons",
-    text: "Painting instruction for beginners, online or in person.",
-    href: "/classes",
-    image: "/images/cbm_about.jpg",
-  },
+import PageLayout from "../layouts/PageLayout.astro";
+
+const cards = [
+{ slug: "angels", title: "Angels", image: "/images/angels.jpg" },
+{ slug: "cat", title: "Cat", image: "/images/cat.jpg" },
+{ slug: "cats", title: "Cats", image: "/images/cats.jpg" },
+{ slug: "cows", title: "Cows", image: "/images/cows.jpg" },
+{ slug: "dogs", title: "Dogs", image: "/images/dogs.jpg" },
+{ slug: "fish-1", title: "Fish", image: "/images/fish-1.jpg" },
 ];
+
 ---
 
-<Layout>
+<PageLayout title="Cards By Margaret">
 
-  <section class="cbm-hero">
-    <div class="hero-copy">
-      <p class="eyebrow">ORIGINAL ARTWORK</p>
-      <h1>Cards<br />By Margaret</h1>
-      <p class="intro">
-        Paintings, pastels, colored pencils, and handmade cards
-        by Margaret McKeough Breighner.
-      </p>
-
-      <div class="hero-actions">
-        <a class="primary" href="/artwork">View Artwork</a>
-        <a href="/about">About Margaret</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="welcome">
-    <p class="eyebrow">CARDS BY MARGARET</p>
-    <h2>Art made by hand.</h2>
-    <p>
-      Margaret began studying art in Switzerland in 1965 and continued
-      her studies after returning to the United States. Her work now
-      includes pastels, colored pencils, paintings, and cards based
-      on her original artwork.
-    </p>
-  </section>
-
-  <section class="feature-grid">
-    {featured.map((item) => (
-      <a class="feature" href={item.href}>
-        <div class="feature-image">
-          <img src={item.image} alt="" />
-        </div>
-        <div class="feature-copy">
-          <h2>{item.title}</h2>
-          <p>{item.text}</p>
-          <span>Explore →</span>
-        </div>
+  <section class="hero">
+    <div class="hero-image">
+      <a href="/artwork/angels/">
+        <img
+          src="/images/angels.jpg"
+          alt="Angels by Margaret McKeough Breighner"
+        />
       </a>
-    ))}
+    </div>
+
+
+<div class="hero-info">
+  <div>
+    <p class="label">CARDS BY MARGARET</p>
+    <h1>Original artwork,<br />made into cards.</h1>
+  </div>
+
+  <p class="description">
+    Artwork by Margaret McKeough Breighner,
+    reproduced as cards and prints.
+  </p>
+
+  <a class="browse" href="/artwork/">View the collection →</a>
+</div>
+
   </section>
 
-</Layout>
+  <section class="collection">
+
+<div class="section-heading">
+  <p class="label">THE COLLECTION</p>
+  <a href="/artwork/">View all →</a>
+</div>
+
+<div class="grid">
+  {cards.map((card) => (
+    <a class="card" href={`/artwork/${card.slug}/`}>
+      <div class="image">
+        <img src={card.image} alt={card.title} loading="lazy" />
+      </div>
+      <div class="caption">
+        <span>{card.title}</span>
+        <span>→</span>
+      </div>
+    </a>
+  ))}
+</div>
+
+
+  </section>
+
+  <section class="about">
+
+
+<div class="about-image">
+  <img
+    src="/images/angels.jpg"
+    alt="Artwork by Margaret McKeough Breighner"
+    loading="lazy"
+  />
+</div>
+
+<div class="about-text">
+  <p class="label">ABOUT</p>
+  <h2>Art meant<br />to be shared.</h2>
+  <p>
+    Cards By Margaret brings Margaret McKeough Breighner's
+    original artwork into everyday correspondence.
+  </p>
+  <a href="/bio">About Margaret →</a>
+</div>
+```
+
+  </section>
+
+</PageLayout>
 
 <style>
-  .cbm-hero {
-    min-height: 78vh;
-    display: flex;
-    align-items: flex-end;
-    padding: 8rem 7vw 7rem;
-    background:
-      linear-gradient(
-        to top,
-        rgba(0,0,0,.7),
-        rgba(0,0,0,.18),
-        rgba(0,0,0,0)
-      ),
-      url("/images/cbm_about.jpg") center / cover;
-    color: white;
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+  gap: 5vw;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 4rem 3rem 8rem;
+  align-items: center;
+}
+
+.hero-image {
+  background: #f5f5f3;
+}
+
+.hero-image a {
+  display: block;
+  border: 0;
+}
+
+.hero-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-info {
+  padding-right: 2rem;
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: .98;
+  font-weight: 400;
+  letter-spacing: -.03em;
+  margin: 0;
+}
+
+.description {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 330px;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.browse,
+.about-text a {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 3px;
+}
+
+.collection {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 3rem 9rem;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading .label {
+  margin: 0;
+}
+
+.section-heading a {
+  font-size: 13px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem 1.2rem;
+}
+
+.card {
+  display: block;
+  border: 0;
+}
+
+.image {
+  background: #f5f5f3;
+  overflow: hidden;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform .25s ease;
+}
+
+.card:hover img {
+  transform: scale(1.02);
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  padding-top: .65rem;
+  font-size: 13px;
+}
+
+.about {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 3rem 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7vw;
+  align-items: center;
+}
+
+.about-image img {
+  display: block;
+  width: 100%;
+}
+
+.about-text h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  line-height: .95;
+  font-weight: 400;
+  letter-spacing: -.03em;
+  margin: 0 0 2rem;
+}
+
+.about-text > p:not(.label) {
+  max-width: 360px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 750px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem 6rem;
+    gap: 2.5rem;
   }
 
-  .hero-copy {
-    max-width: 650px;
-  }
-
-  .eyebrow {
-    font-size: 11px;
-    letter-spacing: .22em;
-    margin: 0 0 1rem;
-    font-weight: 600;
-  }
-
-  .hero-copy h1 {
-    color: white;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(4rem, 10vw, 8rem);
-    line-height: .88;
-    font-weight: 400;
-    letter-spacing: -.055em;
-    margin: 0;
-  }
-
-  .intro {
-    max-width: 500px;
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin: 2rem 0;
-    color: rgba(255,255,255,.9);
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .hero-actions a {
-    color: white;
-    border-color: rgba(255,255,255,.5);
-  }
-
-  .hero-actions .primary {
-    border: 1px solid white;
-    padding: .75rem 1.1rem;
-  }
-
-  .welcome {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 8rem 1.5rem;
-    text-align: center;
-  }
-
-  .welcome h2 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 400;
-    line-height: 1;
-    margin: 0 0 1.5rem;
-  }
-
-  .welcome p:last-child {
-    max-width: 600px;
-    margin: auto;
-    color: #555;
-  }
-
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: #ddd;
-    border-top: 1px solid #ddd;
-  }
-
-  .feature {
-    background: white;
-    border: 0;
+  .hero-info {
     padding: 0;
-    transform: none !important;
   }
 
-  .feature-image {
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
+  .hero-info h1 {
+    font-size: 3.5rem;
   }
 
-  .feature-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .5s ease;
+  .collection {
+    padding: 0 1.5rem 6rem;
   }
 
-  .feature:hover .feature-image img {
-    transform: scale(1.04);
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem .8rem;
   }
 
-  .feature-copy {
-    padding: 2rem;
+  .about {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem 6rem;
+    gap: 2.5rem;
   }
-
-  .feature-copy h2 {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 2rem;
-    font-weight: 400;
-    margin: 0 0 .5rem;
-  }
-
-  .feature-copy p {
-    font-size: .9rem;
-    color: #666;
-    margin: 0 0 1.25rem;
-  }
-
-  .feature-copy span {
-    font-size: .75rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-  }
-
-  @media (max-width: 700px) {
-    .cbm-hero {
-      min-height: 75vh;
-      padding: 6rem 1.5rem 4rem;
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(3.8rem, 18vw, 6rem);
-    }
-
-    .feature-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .welcome {
-      padding: 5rem 1.5rem;
-    }
-  }
+}
 </style>

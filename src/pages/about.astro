@@ -1,0 +1,100 @@
+---
+
+
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout title="About — Cards By Margaret">
+<main class="about">
+  <h1>About Margaret</h1>
+
+<img
+ class="portrait"
+ src="/images/IMG_5979.jpg"
+ alt="Margaret McKeough Breighner"
+/>
+
+  <div class="bio">
+    <p>
+      Margaret McKeough Breighner was born in Torresdale, Philadelphia, PA,
+      in 1943. Her interest in art began in 1965 while in Switzerland, where
+      she took a course in Bern. Later, in the U.S., she resumed her lessons
+      in Arlington, Virginia.
+    </p>
+
+```
+<p>
+  Her studies included oil instruction, though she is presently using
+  pastels and colored pencils. She presently lives in Arlington, Virginia.
+</p>
+
+<p>
+  Please email us at
+  <a href="mailto:info@cardsbymargaret.com">
+    info@cardsbymargaret.com
+  </a>.
+</p>
+```
+
+  </div>
+</main>
+
+</PageLayout>
+
+<style>
+.about {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+  text-align: center;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  margin: 0 0 2.5rem;
+}
+
+.portrait {
+  display: block;
+  width: min(100%, 420px);
+  max-height: 560px;
+  object-fit: contain;
+  margin: 0 auto 3rem;
+}
+
+.bio {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.bio p {
+  margin: 0 0 1.5rem;
+}
+
+.bio p:last-child {
+  margin-top: 2rem;
+}
+
+.bio a {
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding-top: 2.5rem;
+  }
+
+  .portrait {
+    margin-bottom: 2rem;
+  }
+
+  .bio {
+    font-size: 1rem;
+  }
+}
+</style>

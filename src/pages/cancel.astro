@@ -1,0 +1,48 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout title="Order Cancelled — Cards By Margaret">
+  <main class="message">
+    <p class="label">ORDER CANCELLED</p>
+    <h1>No problem.</h1>
+    <p>
+      Your order was not completed. You can return to the artwork
+      and try again whenever you're ready.
+    </p>
+    <a href="/artwork/">Back to artwork →</a>
+  </main>
+</PageLayout>
+
+<style>
+.message {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem;
+  text-align: center;
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--muted);
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 400;
+  margin: 1rem 0 1.5rem;
+}
+
+.message p:not(.label) {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.message a {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 3px;
+}
+</style>

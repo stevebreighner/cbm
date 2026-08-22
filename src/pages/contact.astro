@@ -1,44 +1,140 @@
 ---
+
 import PageLayout from "../layouts/PageLayout.astro";
 ---
-
 <PageLayout title="Contact">
-  <h1>Contact</h1>
+
+  <main class="contact">
+    <h1>Contact</h1>
+
+<p class="intro">
+  Have a question about the artwork or cards? Send us a message.
+</p>
 
 <form
   action="https://formspree.io/f/xanoeyok"
   method="POST"
   class="contact-form"
 >
-  <input
-    type="text"
-    name="name"
-  
-    required
-  />
+  <label>
+    <span>Name</span>
+    <input
+      type="text"
+      name="name"
+      autocomplete="name"
+      required
+    />
+  </label>
 
-  <input
-    type="email"
-    name="email"
-    
-    required
-  />
+  <label>
+    <span>Email</span>
+    <input
+      type="email"
+      name="email"
+      autocomplete="email"
+      required
+    />
+  </label>
 
-  <input
-    type="text"
-    name="subject"
- 
-  />
+  <label>
+    <span>Subject</span>
+    <input
+      type="text"
+      name="subject"
+    />
+  </label>
 
-  <textarea
-    name="message"
-    rows="8"
-     
-    required
-  ></textarea>
+  <label>
+    <span>Message</span>
+    <textarea
+      name="message"
+      rows="8"
+      required
+    ></textarea>
+  </label>
 
-  <button type="submit">
-
-  </button>
+  <button type="submit">Send Message</button>
 </form>
+```
+
+  </main>
+
 </PageLayout>
+
+<style>
+.contact {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  margin: 0 0 1rem;
+}
+
+.intro {
+  color: var(--muted);
+  margin: 0 0 2.5rem;
+  line-height: 1.7;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+label {
+  display: grid;
+  gap: .5rem;
+}
+
+label span {
+  font-size: 13px;
+  letter-spacing: .04em;
+}
+
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: .8rem .9rem;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  border-radius: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--text);
+}
+
+button {
+  justify-self: start;
+  padding: .8rem 1.3rem;
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: var(--bg);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .contact {
+    padding-top: 2.5rem;
+  }
+}
+</style>
