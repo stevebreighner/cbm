@@ -10,6 +10,24 @@ import "../styles/global.css";
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Cards By Margaret — artwork, cards, and paintings by Margaret McKeough Breighner." />
   <title>{title}</title>
+
+<style>
+  #cart-indicator {
+    display: none;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    background: #1976d2;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  #cart-indicator.has-items {
+    display: block;
+  }
+</style>
 </head>
 
 <body>
@@ -17,7 +35,10 @@ import "../styles/global.css";
 <header class="header">
   <a class="brand" href="/">CARDS BY MARGARET</a>
 
-  <button class="hamburger" id="menuBtn" aria-label="Open menu">☰</button>
+  <button class="hamburger" id="menuBtn" aria-label="Open menu">
+    ☰
+    <span id="cart-indicator" aria-hidden="true"></span>
+  </button>
 </header>
 
 <div class="menu" id="menu">
@@ -26,6 +47,7 @@ import "../styles/global.css";
     <a href="/artwork">Artwork</a>
     <a href="/about">About</a>
     <a href="/contact">Contact</a>
+    <a href="/cart/">Cart</a>
   </nav>
 </div>
 
@@ -51,6 +73,22 @@ import "../styles/global.css";
       menu.classList.remove("open");
     }
   });
+
+  const cartIndicator = document.getElementById("cart-indicator");
+
+  function updateCartIndicator() {
+    if (!cartIndicator) return;
+
+    try {
+      const cart = JSON.parse(localStorage.getItem("cbm-cart") || "[]");
+      cartIndicator.classList.toggle("has-items", cart.length > 0);
+    } catch {
+      cartIndicator.classList.remove("has-items");
+    }
+  }
+
+  updateCartIndicator();
+  window.addEventListener("storage", updateCartIndicator);
 </script>
 
 </body>

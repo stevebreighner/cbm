@@ -29,12 +29,26 @@ import PageLayout from "../layouts/PageLayout.astro";
 
       <div class="shipping">
         <span>Tax</span>
-        <span>Calculated at checkout</span>
+        <span id="tax-display">Enter ZIP code</span>
       </div>
 
       <div class="total grand">
         <strong>Total</strong>
         <strong id="total">$4.50</strong>
+      </div>
+
+      <div class="tax-location">
+        <label>
+          <span>ZIP code</span>
+          <input
+            id="tax-zip"
+            type="text"
+            inputmode="numeric"
+            maxlength="5"
+            autocomplete="postal-code"
+            placeholder="ZIP code"
+          >
+        </label>
       </div>
 
       <button id="checkout">Proceed to Checkout →</button>
@@ -49,9 +63,13 @@ import PageLayout from "../layouts/PageLayout.astro";
   const summaryElement = document.querySelector("#summary");
   const subtotalElement = document.querySelector("#subtotal");
   const totalElement = document.querySelector("#total");
+  const taxDisplay = document.querySelector("#tax-display");
   const checkoutButton = document.querySelector("#checkout");
+  const taxZip = document.querySelector("#tax-zip");
 
   let cart = JSON.parse(localStorage.getItem("cbm-cart") || "[]");
+  let currentTaxRate = 0;
+  let currentTaxState = "";
 
   function render() {
     cartElement.innerHTML = "";
@@ -85,9 +103,19 @@ import PageLayout from "../layouts/PageLayout.astro";
       cartElement.appendChild(row);
     });
 
-    const total = subtotal + 4.50;
+    const tax = subtotal * currentTaxRate;
+    const total = subtotal + 4.50 + tax;
 
     subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+
+    if (currentTaxRate > 0) {
+      taxDisplay.textContent = `$${tax.toFixed(2)}`;
+    } else {
+      taxDisplay.textContent = taxZip?.value.trim().length === 5
+        ? "$0.00"
+        : "Enter ZIP code";
+    }
+
     totalElement.textContent = `$${total.toFixed(2)}`;
 
     cartElement.querySelectorAll("[data-remove]").forEach((button) => {
@@ -99,9 +127,62 @@ import PageLayout from "../layouts/PageLayout.astro";
     });
   }
 
+  let taxTimer;
+
+  async function updateTax() {
+    const zip = taxZip?.value.trim() || "";
+
+    currentTaxRate = 0;
+    currentTaxState = "";
+
+    if (!/^\d{5}$/.test(zip)) {
+      taxDisplay.textContent = "Enter ZIP code";
+      render();
+      return;
+    }
+
+    taxDisplay.textContent = "Calculating…";
+
+    clearTimeout(taxTimer);
+
+    taxTimer = setTimeout(async () => {
+      try {
+        const response = await fetch(
+          `https://cbm-cart-worker.steve-breighner.workers.dev/tax-rate?zip=${encodeURIComponent(zip)}`
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to determine tax.");
+        }
+
+        currentTaxRate = Number(data.rate) || 0;
+        currentTaxState = data.state || "";
+
+        render();
+      } catch (error) {
+        console.error("TAX LOOKUP ERROR:", error);
+        currentTaxRate = 0;
+        currentTaxState = "";
+        taxDisplay.textContent = "ZIP not found";
+        render();
+      }
+    }, 250);
+  }
+
+  taxZip.addEventListener("input", updateTax);
+
   checkoutButton.addEventListener("click", async () => {
     if (!cart.length) {
       alert("Your cart is empty.");
+      return;
+    }
+
+    const zip = taxZip?.value.trim() || "";
+
+    if (!/^\d{5}$/.test(zip)) {
+      alert("Please enter your 5-digit ZIP code.");
       return;
     }
 
@@ -118,6 +199,7 @@ import PageLayout from "../layouts/PageLayout.astro";
           },
           body: JSON.stringify({
             cart: cart.map((item) => item.slug),
+            zip,
           }),
         }
       );
@@ -157,6 +239,34 @@ import PageLayout from "../layouts/PageLayout.astro";
     font-size: clamp(2.5rem, 6vw, 5rem);
     line-height: 0.95;
     margin: 0 0 55px;
+  }
+
+  .tax-location {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+
+  .tax-location label {
+    display: grid;
+    gap: 7px;
+    width: 180px;
+    font-size: 0.85rem;
+  }
+
+  .tax-location input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    background: white;
+    font: inherit;
+  }
+
+  .tax-location input:focus {
+    outline: none;
+    border-color: #222;
   }
 
   .cart-item {
