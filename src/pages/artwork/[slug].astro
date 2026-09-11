@@ -65,22 +65,35 @@ const canBuy = price && status.toLowerCase() !== "sold";
 )}
 
 {canBuy && (
-  <form
+  <button
     class="buy-form"
-    method="post"
-    action="https://cbm-stripe-worker.steve-breighner.workers.dev/create-checkout-session"
+    id="add-to-cart"
+    type="button"
   >
-    <input
-      type="hidden"
-      name="artwork_slug"
-      value={slug}
-    />
-
-    <button type="submit">
-      Buy Now
-    </button>
-  </form>
+    Add to Cart
+  </button>
 )}
+
+<script define:vars={{ slug, title: piece.frontmatter.title, image: piece.frontmatter.image, price }}>
+  const button = document.querySelector("#add-to-cart");
+
+  if (button) {
+    button.addEventListener("click", () => {
+      const cart = JSON.parse(localStorage.getItem("cbm-cart") || "[]");
+
+      cart.push({
+        slug,
+        title,
+        image,
+        price: Number.parseFloat(price),
+      });
+
+      localStorage.setItem("cbm-cart", JSON.stringify(cart));
+
+      window.location.href = "/cart/";
+    });
+  }
+</script>
 
 <div class="content">
   <piece.Content />

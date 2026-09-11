@@ -1,0 +1,100 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout title="Shipping & Policies">
+
+  <section class="page">
+    <p class="label">SHIPPING & POLICIES</p>
+
+    <h1>Shipping & Returns</h1>
+
+    <div class="content">
+
+      <h2>Shipping</h2>
+
+      <p>
+        Cards By Margaret currently ships within the continental United States only.
+      </p>
+
+      <p>
+        Shipping is a flat <strong>$4.50 per order</strong>, whether you purchase
+        one card or several cards, up to six cards per order.
+      </p>
+
+      <p>
+        Orders are generally shipped within 3–5 business days.
+      </p>
+
+      <h2>International Shipping</h2>
+
+      <p>
+        We are not currently able to offer international shipping.
+      </p>
+
+      <h2>Returns & Problems</h2>
+
+      <p>
+        Because each card is carefully prepared for shipment, we generally do not
+        accept returns for unwanted items. If your order arrives damaged or there
+        is a problem with your order, please contact us within 14 days of delivery
+        and we will work with you to make it right.
+      </p>
+
+      <p>
+        Please contact us before sending anything back.
+      </p>
+
+      <h2>Questions</h2>
+
+      <p>
+        If you have a question about an order, shipping, or a product, please
+        <a href="/contact">contact us</a>.
+      </p>
+
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px 120px;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+    margin: 0 0 70px;
+  }
+
+  .content {
+    max-width: 680px;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    margin: 45px 0 15px;
+  }
+
+  h2:first-child {
+    margin-top: 0;
+  }
+
+  p {
+    line-height: 1.7;
+    margin: 0 0 18px;
+  }
+
+  a {
+    color: inherit;
+  }
+</style>

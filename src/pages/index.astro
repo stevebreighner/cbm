@@ -3,12 +3,10 @@
 import PageLayout from "../layouts/PageLayout.astro";
 
 const cards = [
-{ slug: "angels", title: "Angels", image: "/images/angels.jpg" },
+
 { slug: "cat", title: "Cat", image: "/images/cat.jpg" },
-{ slug: "cats", title: "Cats", image: "/images/cats.jpg" },
 { slug: "cows", title: "Cows", image: "/images/cows.jpg" },
 { slug: "dogs", title: "Dogs", image: "/images/dogs.jpg" },
-{ slug: "fish-1", title: "Fish", image: "/images/fish-1.jpg" },
 ];
 
 ---
@@ -71,7 +69,7 @@ const cards = [
 
 <div class="about-image">
   <img
-    src="/images/angels.jpg"
+    src="/images/houses_3.jpg"
     alt="Artwork by Margaret McKeough Breighner"
     loading="lazy"
   />
@@ -84,9 +82,8 @@ const cards = [
     Cards By Margaret brings Margaret McKeough Breighner's
     original artwork into everyday correspondence.
   </p>
-  <a href="/bio">About Margaret →</a>
 </div>
-```
+
 
   </section>
 
@@ -268,6 +265,11 @@ h1 {
     grid-template-columns: 1fr;
     padding: 0 1.5rem 6rem;
     gap: 2.5rem;
+  }
+}
+@media (max-width: 750px) {
+  .grid .card:nth-child(n+3) {
+    display: none;
   }
 }
 </style>

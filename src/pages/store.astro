@@ -1,0 +1,74 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout title="Store">
+
+  <section class="page">
+    <p class="label">THE STORE</p>
+
+    <h1>Cards & Prints</h1>
+
+    <div class="intro">
+      <p>
+        Bring Margaret McKeough Breighner's original artwork into
+        everyday correspondence. Cards are $10 each.
+      </p>
+
+      <p>
+        Shipping is a flat $4.50 per order for up to six cards.
+        Currently shipping within the continental United States only.
+      </p>
+    </div>
+
+    <div class="links">
+      <a href="/artwork/">Browse the collection →</a>
+      <a href="/shipping/">Shipping & Returns →</a>
+    </div>
+  </section>
+
+</PageLayout>
+
+<style>
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px 120px;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+    margin: 0 0 55px;
+  }
+
+  .intro {
+    max-width: 650px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .intro p {
+    margin: 0 0 22px;
+  }
+
+  .links {
+    display: flex;
+    gap: 30px;
+    margin-top: 55px;
+    flex-wrap: wrap;
+  }
+
+  .links a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 4px;
+  }
+</style>

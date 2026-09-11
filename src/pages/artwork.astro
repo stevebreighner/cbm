@@ -35,30 +35,23 @@ function buildRows(items) {
     return 2;
   };
 
-  const flush = () => {
-    if (row.length) {
+  for (const item of items) {
+    const u = size(item.orientation);
+
+    if (row.length && units + u > 6) {
       rows.push(row);
       row = [];
       units = 0;
     }
-  };
-
-  for (const item of items) {
-    const u = size(item.orientation);
-
-    if (units + u > 6) {
-      flush();
-    }
 
     row.push(item);
     units += u;
-
-    if (units === 6) {
-      flush();
-    }
   }
 
-  flush();
+  if (row.length) {
+    rows.push(row);
+  }
+
   return rows;
 }
 
@@ -108,7 +101,7 @@ const rows = buildRows(artwork);
 }
 
 .item {
-  flex: 1;
+  flex: 0 0 calc((100% - 20px) / 3);
   display: block;
   min-width: 0;
   overflow: hidden;
@@ -129,7 +122,12 @@ const rows = buildRows(artwork);
 }
 
 .item.landscape {
-  flex: 1.5;
+  flex: 0 0 calc((100% - 10px) / 2);
+}
+
+/* Don't let a lone item in the final row stretch across the gallery */
+.row:has(.item:only-child) .item {
+  flex: 0 0 32%;
 }
 
 .item.landscape img {
