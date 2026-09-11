@@ -27,6 +27,11 @@ import PageLayout from "../layouts/PageLayout.astro";
         <span>$4.50</span>
       </div>
 
+      <div class="shipping">
+        <span>Tax</span>
+        <span>Calculated at checkout</span>
+      </div>
+
       <div class="total grand">
         <strong>Total</strong>
         <strong id="total">$4.50</strong>
@@ -95,30 +100,38 @@ import PageLayout from "../layouts/PageLayout.astro";
   }
 
   checkoutButton.addEventListener("click", async () => {
-    if (!cart.length) return;
+    if (!cart.length) {
+      alert("Your cart is empty.");
+      return;
+    }
 
     checkoutButton.disabled = true;
     checkoutButton.textContent = "Loading…";
 
-    const response = await fetch(
-      "https://cbm-cart-worker.steve-breighner.workers.dev/create-checkout-session",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          cart: cart.map((item) => item.slug),
-        }),
+    try {
+      const response = await fetch(
+        "https://cbm-cart-worker.steve-breighner.workers.dev/create-checkout-session",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            cart: cart.map((item) => item.slug),
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "Unable to start checkout.");
       }
-    );
-
-    const data = await response.json();
-
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert(data.error || "Unable to start checkout.");
+    } catch (error) {
+      console.error("CHECKOUT ERROR:", error);
+      alert("Checkout error: " + (error.message || error));
       checkoutButton.disabled = false;
       checkoutButton.textContent = "Proceed to Checkout →";
     }
