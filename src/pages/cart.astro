@@ -101,7 +101,7 @@ import PageLayout from "../layouts/PageLayout.astro";
     checkoutButton.textContent = "Loading…";
 
     const response = await fetch(
-      "https://cbm-stripe-worker.steve-breighner.workers.dev/create-checkout-session",
+      "https://cbm-cart-worker.steve-breighner.workers.dev/create-checkout-session",
       {
         method: "POST",
         headers: {
