@@ -12,7 +12,25 @@ const cards = [
 ---
 
 <PageLayout title="Cards By Margaret">
+  <section class="special">
+    <div class="special-image">
+      <img
+        src="/images/rosary_card_front.jpg"
+        alt="Rosary Card featuring artwork by Margaret McKeough Breighner"
+        loading="lazy"
+      />
+    </div>
 
+    <div class="special-info">
+      <p class="label">SPECIAL CARD</p>
+      <h2>A special card<br />for a special occasion.</h2>
+      <p>
+        A limited-time card featuring Margaret's artwork,
+        available in quantities of one to six.
+      </p>
+      <a class="browse" href="/special-card/">View the special card →</a>
+    </div>
+  </section>
   <section class="hero">
     <div class="hero-image">
       <a href="/artwork/angels/">
@@ -39,6 +57,7 @@ const cards = [
 </div>
 
   </section>
+  
 
   <section class="collection">
 
@@ -148,6 +167,57 @@ h1 {
   padding-bottom: 3px;
 }
 
+/* SPECIAL CARD */
+
+.special {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem 3rem 3.5rem;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 4vw;
+  align-items: center;
+}
+
+.special-image {
+  background: #f5f5f3;
+}
+
+.special-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.special-info h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: .98;
+  font-weight: 400;
+  letter-spacing: -.03em;
+  margin: 0 0 1.25rem;
+}
+
+.special-info > p:not(.label) {
+  max-width: 320px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Divider showing there is more content below */
+.special::after {
+  content: "";
+  position: absolute;
+  left: 3rem;
+  right: 3rem;
+  bottom: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* COLLECTION */
+
 .collection {
   max-width: 1250px;
   margin: 0 auto;
@@ -206,6 +276,8 @@ h1 {
   font-size: 13px;
 }
 
+/* ABOUT */
+
 .about {
   max-width: 1000px;
   margin: 0 auto;
@@ -237,6 +309,8 @@ h1 {
   margin-bottom: 2rem;
 }
 
+/* MOBILE */
+
 @media (max-width: 750px) {
   .hero {
     grid-template-columns: 1fr;
@@ -250,6 +324,25 @@ h1 {
 
   .hero-info h1 {
     font-size: 3.5rem;
+  }
+
+  .special {
+    grid-template-columns: 150px 1fr;
+    padding: 2rem 1.5rem 3rem;
+    gap: 1.5rem;
+  }
+
+  .special-info h2 {
+    font-size: 2rem;
+  }
+
+  .special-info > p:not(.label) {
+    font-size: 14px;
+  }
+
+  .special::after {
+    left: 1.5rem;
+    right: 1.5rem;
   }
 
   .collection {
@@ -266,8 +359,7 @@ h1 {
     padding: 0 1.5rem 6rem;
     gap: 2.5rem;
   }
-}
-@media (max-width: 750px) {
+
   .grid .card:nth-child(n+3) {
     display: none;
   }

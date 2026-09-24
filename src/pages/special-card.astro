@@ -1,0 +1,274 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+
+const slug = "rosary-card";
+const title = "Rosary Card";
+const frontImage = "/images/rosary_card_front.jpg";
+const interiorImage = "/images/rosary_card_interior.png";
+
+const prices = Object.fromEntries(
+  Array.from({ length: 20 }, (_, i) => {
+    const quantity = i + 1;
+
+    let price;
+    if (quantity === 1) price = 5;
+    else if (quantity === 2) price = 7;
+    else price = 10 + (quantity - 3) * 3;
+
+    return [quantity, price];
+  })
+);
+---
+
+<PageLayout title={title}>
+
+<div class="special-card">
+
+  <div class="images">
+    <img
+      class="front"
+      src={frontImage}
+      alt="Rosary Card"
+    />
+
+    <img
+      class="interior"
+      src={interiorImage}
+      alt="Inside of Rosary Card"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="details">
+    <p class="limited">LIMITED TIME</p>
+
+    <h1>{title}</h1>
+
+    <p class="description">
+      A special card featuring Margaret's artwork.
+    </p>
+
+    <div class="quantity">
+      <label for="quantity">Quantity</label>
+
+      <div class="quantity-controls">
+        <button id="minus" type="button" aria-label="Decrease quantity">−</button>
+        <span id="quantity">1</span>
+        <button id="plus" type="button" aria-label="Increase quantity">+</button>
+      </div>
+    </div>
+
+    <p class="price" id="price">$5.00</p>
+
+    <button class="add-button" id="add-to-cart" type="button">
+      Add to Cart
+    </button>
+
+    <p class="shipping">
+      Tax included in cost of card.<br />
+      $4.50 shipping.
+    </p>
+
+    <p class="availability">
+      Available for a limited time.
+    </p>
+  </div>
+
+</div>
+
+<script define:vars={{ slug, title, frontImage, prices }}>
+  const minus = document.querySelector("#minus");
+  const plus = document.querySelector("#plus");
+  const quantityDisplay = document.querySelector("#quantity");
+  const priceDisplay = document.querySelector("#price");
+  const addButton = document.querySelector("#add-to-cart");
+
+  let quantity = 1;
+
+  function update() {
+    quantityDisplay.textContent = quantity;
+    priceDisplay.textContent = `$${prices[quantity].toFixed(2)}`;
+
+    minus.disabled = quantity <= 1;
+    plus.disabled = quantity >= 6;
+  }
+
+  minus.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity--;
+      update();
+    }
+  });
+
+  plus.addEventListener("click", () => {
+    if (quantity < 6) {
+      quantity++;
+      update();
+    }
+  });
+
+  addButton.addEventListener("click", () => {
+    const cart = JSON.parse(
+      localStorage.getItem("cbm-cart") || "[]"
+    );
+
+    cart.push({
+      slug,
+      title,
+      image: frontImage,
+      price: prices[quantity],
+      quantity,
+    });
+
+    localStorage.setItem(
+      "cbm-cart",
+      JSON.stringify(cart)
+    );
+
+    window.location.href = "/cart/";
+  });
+
+  update();
+</script>
+
+</PageLayout>
+
+<style>
+.special-card {
+  max-width: 1000px;
+  margin: 2rem auto 4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 4rem;
+  align-items: start;
+}
+
+.images {
+  display: grid;
+  gap: 2rem;
+}
+
+.images img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.details {
+  max-width: 380px;
+  position: sticky;
+  top: 2rem;
+}
+
+.limited {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.description {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.quantity {
+  margin-top: 1.5rem;
+}
+
+.quantity label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 0.5rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid var(--text);
+}
+
+.quantity-controls button {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  font-size: 20px;
+}
+
+.quantity-controls button:hover:not(:disabled) {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.quantity-controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.quantity-controls span {
+  width: 44px;
+  text-align: center;
+}
+
+.price {
+  font-size: 1.5rem;
+  margin: 1.25rem 0;
+}
+
+.add-button {
+  appearance: none;
+  border: 1px solid var(--text);
+  background: var(--text);
+  color: var(--bg);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.75rem 1.25rem;
+}
+
+.add-button:hover {
+  transform: translateY(-1px);
+}
+
+.shipping,
+.availability {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.shipping {
+  margin-top: 1.25rem;
+}
+
+.availability {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .special-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .details {
+    max-width: none;
+    position: static;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+}
+</style>
