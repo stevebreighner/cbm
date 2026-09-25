@@ -1,0 +1,209 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout title="Terms & Policies">
+
+  <main class="policies">
+
+    <p class="label">TERMS & POLICIES</p>
+
+    <h1>Terms & Policies</h1>
+
+    <section>
+      <h2>About the Artwork</h2>
+      <p>
+        Cards By Margaret features reproductions of original artwork by
+        Margaret McKeough Breighner.
+      </p>
+      <p>
+        The paintings shown on this site are original works of art. Cards,
+        prints, and other products offered for sale are reproductions of those
+        originals and are not the original paintings unless specifically stated
+        otherwise.
+      </p>
+    </section>
+
+    <section>
+      <h2>Prints</h2>
+      <p>
+        Some prints are printed in-house in small quantities rather than being
+        mass-produced commercial prints.
+      </p>
+      <p>
+        Because of this, there may be small variations in color, texture,
+        cropping, or appearance from the images shown on this website. These
+        variations are a normal part of the printing process and do not
+        necessarily indicate a defect.
+      </p>
+      <p>
+        Every effort is made to reproduce the artwork as accurately as possible.
+      </p>
+    </section>
+
+    <section>
+      <h2>Cards</h2>
+      <p>
+        Cards are reproductions of Margaret's original artwork and are produced
+        in small quantities.
+      </p>
+      <p>
+        Product photographs are intended to give a representative view of the
+        finished card. Minor differences between the photograph and the actual
+        printed card may occur.
+      </p>
+    </section>
+
+    <section>
+      <h2>Orders</h2>
+      <p>
+        Please review your order carefully before completing your purchase. We
+        will make every effort to fulfill orders accurately and promptly.
+      </p>
+      <p>
+        If there is a problem with your order, please contact us as soon as
+        possible.
+      </p>
+    </section>
+<section>
+  <h2>Cards By Margaret & Breighner LLC</h2>
+  <p>
+    Cards By Margaret is the name used for this collection of cards, prints,
+    and artwork. The website and sales are operated by Breighner LLC.
+  </p>
+  <p>
+    When you purchase from Cards By Margaret, your payment may therefore
+    appear as <strong>Breighner LLC</strong> on the Stripe checkout page,
+    payment confirmation, or financial statement.
+  </p>
+</section>
+    <section>
+      <h2>Returns & Replacements</h2>
+      <p>
+        Because our cards and prints are produced in small quantities, we
+        generally do not accept returns simply because you have changed your
+        mind.
+      </p>
+      <p>
+        However, we want you to receive your order in good condition and as
+        described.
+      </p>
+
+      <p>If your order:</p>
+
+      <ul>
+        <li>arrives damaged,</li>
+        <li>contains the wrong item,</li>
+        <li>is missing an item, or</li>
+        <li>has a significant printing or production defect,</li>
+      </ul>
+
+      <p>
+        please contact us within 7 days of delivery. Please include your order
+        information and, when appropriate, photographs of the problem.
+      </p>
+
+      <p>
+        If the problem is confirmed, we will work with you to provide a
+        replacement or refund.
+      </p>
+    </section>
+
+    <section>
+      <h2>Shipping</h2>
+      <p>
+        Shipping charges are shown during checkout.
+      </p>
+      <p>
+        Once an order has been shipped, delivery times may vary depending on
+        the shipping carrier. Cards By Margaret is not responsible for delays
+        caused by the carrier, weather, or other circumstances outside our
+        control.
+      </p>
+    </section>
+
+    <section>
+      <h2>Questions</h2>
+      <p>
+        If you have a question about an artwork, card, print, order, or product
+        before purchasing, please contact us. We are happy to help.
+      </p>
+    </section>
+
+  </main>
+
+</PageLayout>
+
+<style>
+.policies {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 3rem 10rem;
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: .95;
+  font-weight: 400;
+  letter-spacing: -.03em;
+  margin: 0 0 5rem;
+}
+
+section {
+  max-width: 650px;
+  margin-bottom: 3.5rem;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin: 0 0 1rem;
+}
+
+p,
+li {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul {
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+
+li {
+  margin-bottom: .35rem;
+}
+
+@media (max-width: 750px) {
+  .policies {
+    padding: 2rem 1.5rem 6rem;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 4rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+</style>
