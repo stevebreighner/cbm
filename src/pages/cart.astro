@@ -67,7 +67,24 @@ import PageLayout from "../layouts/PageLayout.astro";
   const checkoutButton = document.querySelector("#checkout");
   const taxZip = document.querySelector("#tax-zip");
 
-  let cart = JSON.parse(localStorage.getItem("cbm-cart") || "[]");
+  let cart = JSON.parse(localStorage.getItem("cbm-cart") || "[]").map((item) => {
+    const quantity = item.quantity || 1;
+
+    if (item.slug === "rosary-card") {
+      return { ...item, quantity };
+    }
+
+    const unitPrice = item.unitPrice ?? Number(item.price);
+    return {
+      ...item,
+      quantity,
+      unitPrice,
+      price: unitPrice * quantity,
+    };
+  });
+
+  localStorage.setItem("cbm-cart", JSON.stringify(cart));
+
   let currentTaxRate = 0;
   let currentTaxState = "";
 
@@ -86,20 +103,21 @@ import PageLayout from "../layouts/PageLayout.astro";
     let subtotal = 0;
 
     cart.forEach((item, index) => {
-      subtotal += item.price;
+      subtotal += Number(item.price) || 0;
 
       const row = document.createElement("div");
       row.className = "cart-item";
 
       row.innerHTML = `
-       <img
-  class="${item.slug === "rosary-card" ? "special-card-image" : ""}"
-  src="${item.image}"
-  alt="${item.title}"
->
+        <img
+          class="${item.slug === "rosary-card" ? "special-card-image" : ""}"
+          src="${item.image}"
+          alt="${item.title}"
+        >
         <div class="info">
-          <strong>${item.title}</strong>
-          <span>$${item.price.toFixed(2)}</span>
+          <strong>${item.title}${item.slug === "rosary-card" ? "(s)" : ""}</strong>
+          <span>Qty: ${item.quantity || 1}</span>
+          <span>$${Number(item.price).toFixed(2)}</span>
           <button data-remove="${index}">Remove</button>
         </div>
       `;
@@ -202,7 +220,10 @@ import PageLayout from "../layouts/PageLayout.astro";
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            cart: cart.map((item) => item.slug),
+            cart: cart.map((item) => ({
+              slug: item.slug,
+              quantity: item.quantity || 1,
+            })),
             zip,
           }),
         }
@@ -225,7 +246,6 @@ import PageLayout from "../layouts/PageLayout.astro";
 
   render();
 </script>
-
 <style>
   .cart-page {
     max-width: 900px;
@@ -280,10 +300,10 @@ import PageLayout from "../layouts/PageLayout.astro";
     border-bottom: 1px solid #ddd;
   }
 
-  .cart-item img {
-    width: 100px;
+  :global(.cart-item img) {
     height: 100px;
-    object-fit: cover;
+    width: auto;
+    object-fit: contain;
   }
 
   .info {
@@ -349,86 +369,8 @@ import PageLayout from "../layouts/PageLayout.astro";
   }
 
   @media (max-width: 600px) {
-    .cart-item img {
-      width: 80px;
+    :global(.cart-item img) {
       height: 80px;
     }
-  }.cart-item img.special-card-image {
-  object-fit: contain;
-  background: #f5f5f3;
-}
-  .cart-item img.special-card-image {
-  object-fit: contain;
-  background: #f5f5f3;
-}@media (max-width: 600px) {
-  .cart-item img {
-    width: 80px;
-    height: 80px;
   }
-}
-  .cart-item img.special-card-image {
-    object-fit: contain;
-    background: #f5f5f3;
-  }
-.cart-item img.special-card-image {
-  width: 100px;
-  height: 100px;
-  object-fit: contain !important;
-  background: #f5f5f3;
-}
-  .cart-item img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-  }
-
-  .cart-item img.special-card-image {
-    object-fit: contain;
-    background: #f5f5f3;
-  }
-
-  @media (max-width: 600px) {
-    .cart-item img {
-      width: 80px;
-      height: 80px;
-    }
-
-    .cart-item img.special-card-image {
-      object-fit: contain;
-    }
-  }
-    .cart-item img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-  }
-
-  :global(.cart-item img.special-card-image) {
-    height: 100px;
-    background: #f5f5f3;
-  }
-
-  @media (max-width: 600px) {
-    .cart-item img {
-      width: 80px;
-      height: 80px;
-    }
-
-    :global(.cart-item img.special-card-image) {
-      object-fit: contain;
-    }
-  }.cart-item img.special-card-image {
-  width: 75px;
-  height: 100px;  height: 100px;
-  width: auto;
-  object-fit: contain;
-  background: #f5f5f3;
-}
-
-@media (max-width: 600px) {
-  .cart-item img.special-card-image {
-    width: 60px;
-    height: 80px;
-  }
-}
 </style>

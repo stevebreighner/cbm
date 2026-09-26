@@ -65,34 +65,77 @@ const canBuy = price && status.toLowerCase() !== "sold";
 )}
 
 {canBuy && (
-  <button
-    class="buy-form"
-    id="add-to-cart"
-    type="button"
-  >
-    Add to Cart
-  </button>
+  <div class="buy-form">
+    <div class="quantity">
+      <button id="qty-minus" type="button" aria-label="Decrease quantity">−</button>
+      <span id="qty">1</span>
+      <button id="qty-plus" type="button" aria-label="Increase quantity">+</button>
+    </div>
+
+    <button id="add-to-cart" type="button">
+      Add to Cart
+    </button>
+  </div>
 )}
 
 <script define:vars={{ slug, title: piece.frontmatter.title, image: piece.frontmatter.image, price }}>
   const button = document.querySelector("#add-to-cart");
+  const minus = document.querySelector("#qty-minus");
+  const plus = document.querySelector("#qty-plus");
+  const qtyDisplay = document.querySelector("#qty");
 
-  if (button) {
-    button.addEventListener("click", () => {
-      const cart = JSON.parse(localStorage.getItem("cbm-cart") || "[]");
+  let quantity = 1;
+  const unitPrice = Number.parseFloat(price);
 
+  function updateQuantity() {
+    qtyDisplay.textContent = quantity;
+    minus.disabled = quantity <= 1;
+    plus.disabled = quantity >= 6;
+  }
+
+  minus?.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity--;
+      updateQuantity();
+    }
+  });
+
+  plus?.addEventListener("click", () => {
+    if (quantity < 6) {
+      quantity++;
+      updateQuantity();
+    }
+  });
+
+  button?.addEventListener("click", () => {
+    const cart = JSON.parse(localStorage.getItem("cbm-cart") || "[]");
+
+    const existing = cart.find((item) => item.slug === slug);
+
+    if (existing) {
+      existing.quantity = Math.min(
+        (existing.quantity || 1) + quantity,
+        6
+      );
+      existing.unitPrice =
+        existing.unitPrice ?? Number.parseFloat(existing.price);
+      existing.price = existing.unitPrice * existing.quantity;
+    } else {
       cart.push({
         slug,
         title,
         image,
-        price: Number.parseFloat(price),
+        unitPrice,
+        price: unitPrice * quantity,
+        quantity,
       });
+    }
 
-      localStorage.setItem("cbm-cart", JSON.stringify(cart));
+    localStorage.setItem("cbm-cart", JSON.stringify(cart));
+    window.location.href = "/cart/";
+  });
 
-      window.location.href = "/cart/";
-    });
-  }
+  updateQuantity();
 </script>
 
 <div class="content">
@@ -103,10 +146,40 @@ const canBuy = price && status.toLowerCase() !== "sold";
 
 <style>
 .buy-form {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin: 1.25rem 0;
 }
 
-.buy-form button {
+.quantity {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--text);
+}
+
+.quantity button {
+  width: 36px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.quantity button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.quantity span {
+  min-width: 30px;
+  text-align: center;
+}
+
+#add-to-cart {
   appearance: none;
   border: 1px solid var(--text);
   background: var(--text);
@@ -116,7 +189,7 @@ const canBuy = price && status.toLowerCase() !== "sold";
   padding: 0.7rem 1rem;
 }
 
-.buy-form button:hover {
+#add-to-cart:hover {
   transform: translateY(-1px);
 }
 

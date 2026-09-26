@@ -1,0 +1,665 @@
+Script started on 2026-09-26 07:31:29-04:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="158" LINES="26"]
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ nano cart_py[K[K.pu[Ky
+[?2004l[?2004h[?1049h[22;0;0t[1;26r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[24;74H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 6.2                                                               cart_.py                                                                         [1;157H(B[m[25d(B[0;7m^G(B[m Help[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is[52G(B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute[86G(B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[25;120H(B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26d(B[0;7m^X(B[m Exit[26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace[52G(B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify[86G(B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[26;120H(B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[2d[?12l[?25h[?25l[1;87H(B[0;7m*[24d(B[m[K[1;157H[2d(B[0;1m[32m'''cart: cart.map((item) => item.slug),'''[39m(B[m,[3d(B[0;1m[32m'''cart: cart.map((item) => ({[4;14H[1K slug: item.slug,[5;14H[1K quantity: item.quantity || 1,[6;12H[1K })),'''[7d[39m(B[m)[9dp.write_text(s)[11dprint((B[0;1m[32m"Updated:"[39m(B[m)[12dprint(root / (B[0;1m[32m"src/pages/artwork/[slug].astro"[39m(B[m)[13dprint(root / (B[0;1m[32m"src/pages/cart.astro"[39m(B[m)[?12l[?25h[?25l[25;18H[22X[25;40H(B[0;7mM-D(B[m DOS Format    [25;69H          (B[0;7mM-A(B[m Append        [103G        [118G(B[0;7mM-B(B[m Backup File[K[26;2H(B[0;7mC(B[m Cancel[26;18H[22X[26;40H(B[0;7mM-M(B[m Mac Format      [26;69H          (B[0;7mM-P(B[m Prepend[21X[26;118H(B[0;7m^T(B[m Browse[K[24d(B[0;7mFile Name to Write: cart_.py                                                                                                                                  [24;29H(B[m[?12l[?25h[?25l[24;72H[1K (B[0;7m[ Writing... ](B[m[K[1;87H(B[0;7m [157G(B[m[24;70H(B[0;7m[ Wrote 251 lines ](B[m[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is      (B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute       (B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[118G  (B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26;2H(B[0;7mX(B[m Exit  [26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace       (B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify       (B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[118G  (B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[?12l[?25h[13;37H[?25l[24d[J[26d[?12l[?25h[26;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ python32[K o[Kcart.[K)[K_.py
+[?2004lUpdated:
+/home/steveb/Desktop/cbm/src/pages/artwork/[slug].astro
+/home/steveb/Desktop/cbm/src/pages/cart.astro
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mcd ~/Desktop/cbm[27m
+[7mgit diff[27m
+[7mnpm run build[27m[A[A]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ cd ~/Desktop/cbm
+git diff
+npm run build
+[?2004l[?1h=[1mdiff --git a/src/pages/artwork/[slug].astro b/src/pages/artwork/[slug].astro[m[m
+[1mindex 084b86b..c1f60a2 100644[m[m
+[1m--- a/src/pages/artwork/[slug].astro[m[m
+[1m+++ b/src/pages/artwork/[slug].astro[m[m
+[36m@@ -65,34 +65,77 @@[m [mconst canBuy = price && status.toLowerCase() !== "sold";[m[m
+ )}[m[m
+ [m[m
+ {canBuy && ([m[m
+[31m-  <button[m[m
+[31m-    class="buy-form"[m[m
+[31m-    id="add-to-cart"[m[m
+[31m-    type="button"[m[m
+[31m-  >[m[m
+[31m-    Add to Cart[m[m
+[31m-  </button>[m[m
+[32m+[m[32m  <div class="buy-form">[m[m
+[32m+[m[32m    <div class="quantity">[m[m
+[32m+[m[32m      <button id="qty-minus" type="button" aria-label="Decrease quantity">−</button>[m[m
+[32m+[m[32m      <span id="qty">1</span>[m[m
+[32m+[m[32m      <button id="qty-plus" type="button" aria-label="Increase quantity">+</button>[m[m
+[32m+[m[32m    </div>[m[m
+[32m+[m[m
+[32m+[m[32m    <button id="add-to-cart" type="button">[m[m
+[32m+[m[32m      Add to Cart[m[m
+[32m+[m[32m    </button>[m[m
+:[K[H[2J[H[H[2J[H[1mdiff --git a/src/pages/artwork/[slug].astro b/src/pages/artwork/[slug].astro[m[m
+[1mindex 084b86b..c1f60a2 100644[m[m
+[1m--- a/src/pages/artwork/[slug].astro[m[m
+[1m+++ b/src/pages/artwork/[slug].astro[m[m
+[36m@@ -65,34 +65,77 @@[m [mconst canBuy = price && status.toLowerCase() !== "sold";[m[m
+ )}[m[m
+ [m[m
+ {canBuy && ([m[m
+[31m-  <button[m[m
+[31m-    class="buy-form"[m[m
+[31m-    id="add-to-cart"[m[m
+[31m-    type="button"[m[m
+[31m-  >[m[m
+[31m-    Add to Cart[m[m
+[31m-  </button>[m[m
+[32m+[m[32m  <div class="buy-form">[m[m
+[32m+[m[32m    <div class="quantity">[m[m
+[32m+[m[32m      <button id="qty-minus" type="button" aria-label="Decrease quantity">−</button>[m[m
+[32m+[m[32m      <span id="qty">1</span>[m[m
+[32m+[m[32m      <button id="qty-plus" type="button" aria-label="Increase quantity">+</button>[m[m
+[32m+[m[32m    </div>[m[m
+[32m+[m[m
+[32m+[m[32m    <button id="add-to-cart" type="button">[m[m
+[32m+[m[32m      Add to Cart[m[m
+[32m+[m[32m    </button>[m[m
+:[K[H[2J[H[H[2J[H[1mdiff --git a/src/pages/artwork/[slug].astro b/src/pages/artwork/[slug].astro[m[m
+[1mindex 084b86b..c1f60a2 100644[m[m
+[1m--- a/src/pages/artwork/[slug].astro[m[m
+[1m+++ b/src/pages/artwork/[slug].astro[m[m
+[36m@@ -65,34 +65,77 @@[m [mconst canBuy = price && status.toLowerCase() !== "sold";[m[m
+ )}[m[m
+ [m[m
+ {canBuy && ([m[m
+[31m-  <button[m[m
+[31m-    class="buy-form"[m[m
+[31m-    id="add-to-cart"[m[m
+[31m-    type="button"[m[m
+[31m-  >[m[m
+[31m-    Add to Cart[m[m
+[31m-  </button>[m[m
+[32m+[m[32m  <div class="buy-form">[m[m
+[32m+[m[32m    <div class="quantity">[m[m
+[32m+[m[32m      <button id="qty-minus" type="button" aria-label="Decrease quantity">−</button>[m[m
+[32m+[m[32m      <span id="qty">1</span>[m[m
+[32m+[m[32m      <button id="qty-plus" type="button" aria-label="Increase quantity">+</button>[m[m
+[32m+[m[32m    </div>[m[m
+[32m+[m[m
+[32m+[m[32m    <button id="add-to-cart" type="button">[m[m
+[32m+[m[32m      Add to Cart[m[m
+[32m+[m[32m    </button>[m[m
+:[K[H[2J[H[H[2J[H[1mdiff --git a/src/pages/artwork/[slug].astro b/src/pages/artwork/[slug].astro[m[m
+[1mindex 084b86b..c1f60a2 100644[m[m
+[1m--- a/src/pages/artwork/[slug].astro[m[m
+[1m+++ b/src/pages/artwork/[slug].astro[m[m
+[36m@@ -65,34 +65,77 @@[m [mconst canBuy = price && status.toLowerCase() !== "sold";[m[m
+ )}[m[m
+ [m[m
+ {canBuy && ([m[m
+[31m-  <button[m[m
+[31m-    class="buy-form"[m[m
+[31m-    id="add-to-cart"[m[m
+[31m-    type="button"[m[m
+[31m-  >[m[m
+[31m-    Add to Cart[m[m
+[31m-  </button>[m[m
+[32m+[m[32m  <div class="buy-form">[m[m
+[32m+[m[32m    <div class="quantity">[m[m
+[32m+[m[32m      <button id="qty-minus" type="button" aria-label="Decrease quantity">−</button>[m[m
+[32m+[m[32m      <span id="qty">1</span>[m[m
+[32m+[m[32m      <button id="qty-plus" type="button" aria-label="Increase quantity">+</button>[m[m
+[32m+[m[32m    </div>[m[m
+[32m+[m[m
+[32m+[m[32m    <button id="add-to-cart" type="button">[m[m
+[32m+[m[32m      Add to Cart[m[m
+[32m+[m[32m    </button>[m[m
+:[K[H[2J[H[H[2J[H[1mdiff --git a/src/pages/artwork/[slug].astro b/src/pages/artwork/[slug].astro[m[m
+[1mindex 084b86b..c1f60a2 100644[m[m
+[1m--- a/src/pages/artwork/[slug].astro[m[m
+[1m+++ b/src/pages/artwork/[slug].astro[m[m
+[36m@@ -65,34 +65,77 @@[m [mconst canBuy = price && status.toLowerCase() !== "sold";[m[m
+ )}[m[m
+ [m[m
+ {canBuy && ([m[m
+[31m-  <button[m[m
+[31m-    class="buy-form"[m[m
+[31m-    id="add-to-cart"[m[m
+[31m-    type="button"[m[m
+[31m-  >[m[m
+[31m-    Add to Cart[m[m
+[31m-  </button>[m[m
+[32m+[m[32m  <div class="buy-form">[m[m
+[32m+[m[32m    <div class="quantity">[m[m
+[32m+[m[32m      <button id="qty-minus" type="button" aria-label="Decrease quantity">−</button>[m[m
+[32m+[m[32m      <span id="qty">1</span>[m[m
+[32m+[m[32m      <button id="qty-plus" type="button" aria-label="Increase quantity">+</button>[m[m
+[32m+[m[32m    </div>[m[m
+[32m+[m[m
+[32m+[m[32m    <button id="add-to-cart" type="button">[m[m
+[32m+[m[32m      Add to Cart[m[m
+[32m+[m[32m    </button>[m[m
+:[K[K[?1l>
+
+> stephen@0.0.1 build
+> astro build
+
+[1G[0K[2m07:32:51[22m [34m[@astrojs/cloudflare][39m Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+[2m07:32:51[22m [34m[@astrojs/cloudflare][39m Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+[2m07:32:51[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[2m07:32:51[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[2m07:32:53[22m [34m[content][39m Syncing content
+[2m07:32:53[22m [34m[content][39m Synced content
+[2m07:32:53[22m [34m[types][39m Generated [2m1.71s[22m
+[2m07:32:53[22m [34m[build][39m output: [34m"static"[39m
+[2m07:32:53[22m [34m[build][39m mode: [34m"static"[39m
+[2m07:32:53[22m [34m[build][39m directory: [34m/home/steveb/Desktop/cbm/dist/[39m
+[2m07:32:53[22m [34m[build][39m adapter: [32m@astrojs/cloudflare[39m
+[2m07:32:53[22m [34m[build][39m Collecting build info...
+[2m07:32:53[22m [34m[build][39m [32m✓ Completed in 1.81s.[39m
+[2m07:32:53[22m [34m[build][39m Building static entrypoints...
+[2m07:32:54[22m [34m[vite][39m [32m✓ built in 710ms[39m
+[2m07:32:54[22m [34m[vite][39m [32m✓ built in 179ms[39m
+[2m07:32:54[22m [34m[build][39m Rearranging server assets...
+
+[42m[30m generating static routes [39m[49m
+[2m07:32:55[22m   [34m├─[39m [2m/about/index.html[22m [2m(+56ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/angels/index.html[22m [2m(+30ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/cat/index.html[22m [2m(+30ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/cows/index.html[22m [2m(+41ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/dogs/index.html[22m [2m(+42ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/fish-3/index.html[22m [2m(+31ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/fish-5/index.html[22m [2m(+23ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/flowers-1/index.html[22m [2m(+27ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/flowers-2/index.html[22m [2m(+26ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/flowers-vase-1/index.html[22m [2m(+21ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/flowers2-1/index.html[22m [2m(+21ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/flowers2-2/index.html[22m [2m(+20ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/flowers3-1/index.html[22m [2m(+21ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/flowers3-4/index.html[22m [2m(+22ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/flowers4-1/index.html[22m [2m(+22ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/flowers4-3/index.html[22m [2m(+23ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/fruit-plant-1/index.html[22m [2m(+25ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/fruit-plant-2/index.html[22m [2m(+24ms)[22m 
+[2m07:32:55[22m   [34m├─[39m [2m/artwork/fruitbowl-1/index.html[22m [2m(+21ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/houses-1/index.html[22m [2m(+26ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/houses-2/index.html[22m [2m(+24ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/houses-3/index.html[22m [2m(+31ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/irish-1/index.html[22m [2m(+27ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/irish-2/index.html[22m [2m(+24ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/irish-3/index.html[22m [2m(+26ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/ladybug-1/index.html[22m [2m(+22ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/leaves-1/index.html[22m [2m(+25ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/leaves-3/index.html[22m [2m(+29ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/sailboats-1/index.html[22m [2m(+30ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/sailboats-3/index.html[22m [2m(+27ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/thanks-1/index.html[22m [2m(+25ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/thanks-4/index.html[22m [2m(+27ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/artwork/index.html[22m [2m(+29ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/bio/index.html[22m [2m(+22ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/cancel/index.html[22m [2m(+21ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/cart/index.html[22m [2m(+30ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/contact/index.html[22m [2m(+23ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/shipping/index.html[22m [2m(+21ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/special-card/index.html[22m [2m(+37ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/store/index.html[22m [2m(+19ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/success/index.html[22m [2m(+19ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/tos/index.html[22m [2m(+23ms)[22m 
+[2m07:32:56[22m   [34m├─[39m [2m/index.html[22m [2m(+21ms)[22m 
+[2m07:32:56[22m [32m✓ Completed in 2.03s.
+[39m
+[2m07:32:56[22m [34m[build][39m [32m✓ Completed in 3.06s.[39m
+[2m07:32:56[22m [34m[@astrojs/cloudflare][39m Injected immutable Cache-Control for /_astro/* into _headers.
+[2m07:32:56[22m [34m[build][39m 43 page(s) built in [1m4.91s[22m
+[2m07:32:56[22m [34m[build][39m [1mComplete![22m
+[1G[0K⠙[1G[0K[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ npm run build[5Pgit diffcd ~/Desktop/cbmpython3 cart_.py[3Pnano[C[C[C[C[C[C[C[C[C
+[?2004l[?2004h[?1049h[22;0;0t[1;26r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[24;73H(B[0;7m[ Reading... ](B[m[24;71H(B[0;7m[ Read 251 lines ](B[m[H(B[0;7m  GNU nano 6.2                                                               cart_.py                                                                         [1;157H(B[m[25d(B[0;7m^G(B[m Help[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is[52G(B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute[86G(B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[25;120H(B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26d(B[0;7m^X(B[m Exit[26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace[52G(B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify[86G(B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[26;120H(B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[2d(B[0;1m[31m# Run from ~/Desktop/cbm[3d# This updates the regular artwork page + cart quantity handling.[4d# The Stripe Worker still needs its matching quantity change separately.[6d[36mfrom[39m(B[m pathlib (B[0;1m[36mimport[39m(B[m Path[8droot = Path.home() / (B[0;1m[32m"Desktop/cbm"[10d[31m# 1. Regular artwork detail page[11d[39m(B[mp = root / (B[0;1m[32m"src/pages/artwork/[slug].astro"[12d[39m(B[ms = p.read_text()[14ds = s.replace([15d(B[0;1m[32m'''{canBuy && ([16d  <button[17d    class="buy-form"[18d    id="add-to-cart"[19d    type="button"[20d  >[21d    Add to Cart[22d  </button>[23d)}'''[39m(B[m,[2d[?12l[?25h[?25l[1;87H(B[0;7m*[157G(B[m[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m'''{canBuy && ([39m(B[m[K[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  <div class="buy-form">[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    <div class="quantity">[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K <button id="qty-minus" type="button" aria-label="Decrease quantity">−</button>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K <span id="qty">1</span>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K <button id="qty-plus" type="button" aria-label="Increase quantity">+</button>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    </div>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    <button id="add-to-cart" type="button">[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K Add to Cart[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    </button>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  </div>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m)}'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H  <button[3d    (B[0;1m[36mclass[39m(B[m=[4d    id=[5d    type=[6d  >[7d    Add to Cart[8d  </button>[9d)}'''[23d(B[m)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hstart = s.index((B[0;1m[32m'<script define:vars='[39m(B[m)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hend = s.index((B[0;1m[32m'</script>'[39m(B[m, start) + len((B[0;1m[32m'</script>'[39m(B[m)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hscript = (B[0;1m[32m'''<script define:vars={{ slug, title: piece.frontmatter.title, image: piece.frontmatter.image, price }}>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  const button = document.querySelector("#add-to-cart");[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  const minus = document.querySelector("#qty-minus");[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  const plus = document.querySelector("#qty-plus");[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H  <div (B[0;1m[36mclass[39m(B[m=[2;24H>[3d    <div (B[0;1m[36mclass[39m(B[m=[3;26H>[4;6H[1K <button id=[4;29H type=[4;43H aria-label=[4;74H>−</button>[5;6H[1K <span id=(B[0;1m[32m"qty"[39m(B[m>1</span>[6;6H[1K <button id=[6;28H type=[6;42H aria-label=[6;73H>+</button>[7d    </div>[9d    <button id=[9;29H type=[9;43H>[10;6H[1K Add to Cart[11d    </button>[12d  </div>[13d)}[14d(B[0;1m[32m)[16dstart = s.index([16;39H)[17dend = s.index([17;26H, start) + len([17;52H)[19dscript = '''[39m(B[m<script define:vars={{ slug, title: piece.frontmatter.title, image: piece.frontmatter.image, price }}>[20d  const button = document.querySelector([20;55H);[21d  const minus = document.querySelector([21;52H);[22d  const plus = document.querySelector([22;50H);[23;3Hconst qtyDisplay = document.querySelector((B[0;1m[32m"#qty"[39m(B[m);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hlet quantity = 1;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hconst unitPrice = Number.parseFloat(price);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hfunction updateQuantity() {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5HqtyDisplay.textContent = quantity;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5Hminus.disabled = quantity <= 1;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5Hplus.disabled = quantity >= 6;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hminus?.addEventListener((B[0;1m[32m"click"[39m(B[m, () => {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H)[4dstart = s.index([4;39H)[5dend = s.index([5;26H, start) + len([5;52H)[7dscript = (B[0;1m[32m'''<script define:vars={{ slug, title: piece.frontmatter.title, image: piece.frontmatter.image, price }}>[8d  const button = document.querySelector([8;55H);[9d  const minus = document.querySelector([9;52H);[10d  const plus = document.querySelector([10;50H);[11d  const qtyDisplay = document.querySelector([51G);[13d  let quantity = 1;[14d  const unitPrice = Number.parseFloat(price);[16d  function updateQuantity() {[17d    qtyDisplay.textContent = quantity;[18d    minus.disabled = quantity <= 1;[19d    plus.disabled = quantity >= 6;[20d  }[22d  minus?.addEventListener([34G, () => {[23d    if (quantity > 1) {[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K quantity--;[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K updateQuantity();[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    }[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  });[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H  const button = document.querySelector([2;55H);[3d  const minus = document.querySelector([3;52H);[4d  const plus = document.querySelector([4;50H);[5d  const qtyDisplay = document.querySelector([51G);[7d  let quantity = 1;[8d  const unitPrice = Number.parseFloat(price);[10d  function updateQuantity() {[11d    qtyDisplay.textContent = quantity;[12d    minus.disabled = quantity <= 1;[13d    plus.disabled = quantity >= 6;[14d  }[16d  minus?.addEventListener([34G, () => {[17d    (B[0;1m[36mif[39m(B[m (quantity > 1) {[18;6H[1K quantity--;[19;6H[1K updateQuantity();[20d    }[21d  });[23;3Hplus?.addEventListener((B[0;1m[32m"click"[39m(B[m, () => {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5H(B[0;1m[36mif[39m(B[m (quantity < 6) {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7Hquantity++;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7HupdateQuantity();[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3H});[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hbutton?.addEventListener((B[0;1m[32m"click"[39m(B[m, () => {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5Hconst cart = JSON.parse(localStorage.getItem((B[0;1m[32m"cbm-cart"[39m(B[m) || (B[0;1m[32m"[]"[39m(B[m);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5Hconst existing = cart.find((item) => item.slug === slug);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5H(B[0;1m[36mif[39m(B[m (existing) {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7Hexisting.quantity = Math.min([2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9H(existing.quantity || 1) + quantity,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9H6[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7H);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7Hexisting.unitPrice =[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9Hexisting.unitPrice ?? Number.parseFloat(existing.price);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7Hexisting.price = existing.unitPrice * existing.quantity;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5H} (B[0;1m[36melse[39m(B[m {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7Hcart.push({[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9Hslug,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9Htitle,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9Himage,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9HunitPrice,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9Hprice: unitPrice * quantity,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9Hquantity,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7H});[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5HlocalStorage.setItem((B[0;1m[32m"cbm-cart"[39m(B[m, JSON.stringify(cart));[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;5Hwindow.location.href = (B[0;1m[32m"/cart/"[39m(B[m;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3H});[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3HupdateQuantity();[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H</script>(B[0;1m[32m'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32ms = s[:start] + script + s[end:][2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m# Replace buy-button CSS with quantity/button CSS[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32mcss_old = '''[39m(B[m.buy-form {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hmargin: 1.25rem 0;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H.buy-form button {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Happearance: none;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hborder: 1px solid var(--text);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hbackground: var(--text);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hcolor: var(--bg);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hcursor: pointer;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hfont: inherit;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hpadding: 0.7rem 1rem;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H.buy-form button:hover {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Htransform: translateY(-1px);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H}(B[0;1m[32m'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[3;1Hs = s[:start] + script + s[end:][5d(B[0;1m[31m# Replace buy-button CSS with quantity/button CSS[6d[39m(B[mcss_old = (B[0;1m[32m'''.buy-form {[7d  margin: 1.25rem 0;[8d}[10d.buy-form button {[11d  appearance: none;[12d  border: 1px solid var(--text);[13d  background: var(--text);[14d  color: var(--bg);[15d  cursor: pointer;[16d  font: inherit;[17d  padding: 0.7rem 1rem;[18d}[20d.buy-form button:hover {[21d  transform: translateY(-1px);[22d}[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hcss_new = (B[0;1m[32m'''.buy-form {[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  display: flex;[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  align-items: center;[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  gap: 1rem;[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H  margin: 1.25rem 0;[3d}[5d.buy-form button {[6d  appearance: none;[7d  border: 1px solid var(--text);[8d  background: var(--text);[9d  color: var(--bg);[10d  cursor: pointer;[11d  font: inherit;[12d  padding: 0.7rem 1rem;[13d}[15d.buy-form button:hover {[16d  transform: translateY(-1px);[17d}[19d(B[0;1m[32mcss_new = '''[39m(B[m.buy-form {[20d  display: flex;[21d  align-items: center;[22d  gap: 1rem;[23;3Hmargin: 1.25rem 0;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H.quantity {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hdisplay: flex;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Halign-items: center;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hborder: 1px solid var(--text);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H.quantity button {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hwidth: 36px;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hheight: 38px;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hpadding: 0;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hborder: 0;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hbackground: transparent;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hfont: inherit;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[3;1Hcss_new = (B[0;1m[32m'''.buy-form {[4d  display: flex;[5d  align-items: center;[6d  gap: 1rem;[7d  margin: 1.25rem 0;[8d}[10d.quantity {[11d  display: flex;[12d  align-items: center;[13d  border: 1px solid var(--text);[14d}[16d.quantity button {[17d  width: 36px;[18d  height: 38px;[19d  padding: 0;[20d  border: 0;[21d  background: transparent;[22d  font: inherit;[23d  font-size: 1.2rem;[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  cursor: pointer;[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H  display: flex;[3d  align-items: center;[4d  gap: 1rem;[5d  margin: 1.25rem 0;[6d}[8d.quantity {[9d  display: flex;[10d  align-items: center;[11d  border: 1px solid var(--text);[12d}[14d.quantity button {[15d  width: 36px;[16d  height: 38px;[17d  padding: 0;[18d  border: 0;[19d  background: transparent;[20d  font: inherit;[21d  font-size: 1.2rem;[22d  cursor: pointer;[23d}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H.quantity button:disabled {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hopacity: 0.35;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hcursor: default;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H.quantity span {[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hmin-width: 30px;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Htext-align: center;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[31m#add-to-cart {[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Happearance: none;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hborder: 1px solid var(--text);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hbackground: var(--text);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hcolor: var(--bg);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hcursor: pointer;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hfont: inherit;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hpadding: 0.7rem 1rem;[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H}[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[31m#add-to-cart:hover {[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Htransform: translateY(-1px);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H}(B[0;1m[32m'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32ms = s.replace(css_old, css_new)[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32mp.write_text(s)[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m# 2. Cart page[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32mp = root / "src/pages/cart.astro"[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32ms = p.read_text()[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m# Normalize old cart entries immediately after loading[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32ms = s.replace([2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m'''[39m(B[mlet cart = JSON.parse(localStorage.getItem((B[0;1m[32m"cbm-cart"[39m(B[m) || (B[0;1m[32m"[]"[39m(B[m);[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;3Hlet currentTaxRate = 0;'''(B[m,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m'''let cart = JSON.parse(localStorage.getItem("cbm-cart") || "[]").map((item) => {[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    const quantity = item.quantity || 1;[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    if (item.slug === "rosary-card") {[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K return { ...item, quantity };[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    }[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    const unitPrice = item.unitPrice ?? Number(item.price);[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    return {[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[3;1Hs = s.replace(css_old, css_new)[4dp.write_text(s)[6d(B[0;1m[31m# 2. Cart page[7d[39m(B[mp = root / [8ds = p.read_text()[10d(B[0;1m[31m# Normalize old cart entries immediately after loading[11d[39m(B[ms = s.replace([12;4H(B[0;1m[32mlet cart = JSON.parse(localStorage.getItem([12;57H) || "[]");[13d  let currentTaxRate = 0;'''[23;6H[1K ...item,[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K quantity,[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K unitPrice,[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K price: unitPrice * quantity,[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m    };[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  });[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  localStorage.setItem("cbm-cart", JSON.stringify(cart));[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  let currentTaxRate = 0;'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H  let currentTaxRate = 0;'''(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[31m# Subtotal must use line totals[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H    const quantity = item.quantity || 1;[4d    (B[0;1m[36mif[39m(B[m (item.slug === [4;36H) {[5;6H[1K (B[0;1m[36mreturn[39m(B[m { ...item, quantity };[6d    }[8d    const unitPrice = item.unitPrice ?? Number(item.price);[9d    (B[0;1m[36mreturn[39m(B[m {[10;6H[1K ...item,[11;6H[1K quantity,[12;6H[1K unitPrice,[13;6H[1K price: unitPrice * quantity,[14d    };[15d  });[17d  localStorage.setItem([17;34H, JSON.stringify(cart));[19d  let currentTaxRate = 0;[20d(B[0;1m[32m)[22d# Subtotal must use line totals[23ds = s.replace([2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m'''[10G[39m(B[msubtotal += item.price;'''(B[m,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m'''      subtotal += Number(item.price) || 0;'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[31m# Replace cart item display[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hold = (B[0;1m[32m'''      row.innerHTML = `[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7H(B[0;1m[32m[1K <img[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  class="${item.slug === "rosary-card" ? "special-card-image" : ""}"[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  src="${item.image}"[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m  alt="${item.title}"[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;8H(B[0;1m[32m[1K <div class="info">[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;10H(B[0;1m[32m[1K <strong>${item.title}</strong>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;10H(B[0;1m[32m[1K <span>$${item.price.toFixed(2)}</span>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;10H(B[0;1m[32m[1K <button data-remove="${index}">Remove</button>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;8H(B[0;1m[32m[1K </div>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;6H(B[0;1m[32m[1K `;'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H)[4d(B[0;1m[31m# Subtotal must use line totals[5d[39m(B[ms = s.replace([6;4H(B[0;1m[32m      subtotal += item.price;'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hnew = (B[0;1m[32m'''      row.innerHTML = `[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;8H(B[0;1m[32m[1K <img[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;10H(B[0;1m[32m[1K class="${item.slug === "rosary-card" ? "special-card-image" : ""}"[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;10H(B[0;1m[32m[1K src="${item.image}"[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;10H(B[0;1m[32m[1K alt="${item.title}"[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;8H(B[0;1m[32m[1K >[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;8H(B[0;1m[32m[1K <div class="info">[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;10H(B[0;1m[32m[1K <strong>${item.title}${item.slug === "rosary-card" ? "(s)" : ""}</strong>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;10H(B[0;1m[32m[1K <span>Qty: ${item.quantity || 1}</span>[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;7H[1K <img[3d  (B[0;1m[36mclass[39m(B[m=[3;27Hrosary-card(B[0;1m[32m" ? "[39m(B[mspecial-card-image[4d  src=[5d  alt=[6d>[7;8H[1K <div (B[0;1m[36mclass[39m(B[m=[26G>[8;10H[1K <strong>${item.title}</strong>[9;10H[1K <span>$${item.price.toFixed(2)}</span>[10;10H[1K <button data-remove=[10;41H>Remove</button>[11;8H[1K </div>[12;6H[1K `;[14d(B[0;1m[32mnew = '''[39m(B[m      row.innerHTML = `[15;8H[1K <img[16;10H[1K (B[0;1m[36mclass[39m(B[m=[16;35Hrosary-card(B[0;1m[32m" ? "[39m(B[mspecial-card-image[17;10H[1K src=[18;10H[1K alt=[19;8H[1K >[20d[1K <div (B[0;1m[36mclass[39m(B[m=[26G>[21;10H[1K <strong>${item.title}${item.slug === [21;61H ? (B[0;1m[32m"(s)"[39m(B[m : (B[0;1m[32m""[39m(B[m}</strong>[22;10H[1K <span>Qty: ${item.quantity || 1}</span>[23;11H<span>$${Number(item.price).toFixed(2)}</span>[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;11H<button data-remove=(B[0;1m[32m"${index}"[39m(B[m>Remove</button>[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;9H</div>[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;7H`;(B[0;1m[32m'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32ms = s.replace(old, new)[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m# Checkout: send quantities, not just slugs[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32ms = s.replace([2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m'''[39m(B[mcart: cart.map((item) => item.slug),'''(B[m,[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H(B[0;1m[32m'''cart: cart.map((item) => ({[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[3;1Hnew = (B[0;1m[32m'''      row.innerHTML = `[4;8H[1K <img[5;10H[1K class=[5;35Hrosary-card" ? "special-card-image[6;10H[1K src=[7;10H[1K alt=[8;8H[1K >[9d[1K <div class=[26G>[10;10H[1K <strong>${item.title}${item.slug === [10;61H ? "(s)" : ""}</strong>[11;10H[1K <span>Qty: ${item.quantity || 1}</span>[12;10H[1K <span>$${Number(item.price).toFixed(2)}</span>[13;10H[1K <button data-remove=[13;41H>Remove</button>[14;8H[1K </div>[15;6H[1K `;[17d[39m(B[ms = s.replace(old, new)[19d(B[0;1m[31m# Checkout: send quantities, not just slugs[20d[39m(B[ms = s.replace([21;4H(B[0;1m[32mcart: cart.map((item) => item.slug),'''[23;14H[1K slug: item.slug,[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;14H(B[0;1m[32m[1K quantity: item.quantity || 1,[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;8H[1K <img[3;10H[1K (B[0;1m[36mclass[39m(B[m=[3;35Hrosary-card(B[0;1m[32m" ? "[39m(B[mspecial-card-image[4;10H[1K src=[5;10H[1K alt=[6;8H[1K >[7d[1K <div (B[0;1m[36mclass[39m(B[m=[26G>[8;10H[1K <strong>${item.title}${item.slug === [8;61H ? (B[0;1m[32m"(s)"[39m(B[m : (B[0;1m[32m""[39m(B[m}</strong>[9;10H[1K <span>Qty: ${item.quantity || 1}</span>[10;10H[1K <span>$${Number(item.price).toFixed(2)}</span>[11;10H[1K <button data-remove=[11;41H>Remove</button>[12;8H[1K </div>[13;6H[1K `;[15d(B[0;1m[32ms = s.replace(old, new)[17d# Checkout: send quantities, not just slugs[18ds = s.replace([19;4H[39m(B[mcart: cart.map((item) => item.slug),'''[23;12H(B[0;1m[32m[1K })),'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1H)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hp.write_text(s)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hprint((B[0;1m[32m"Updated:"[39m(B[m)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hprint(root / (B[0;1m[32m"src/pages/artwork/[slug].astro"[39m(B[m)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[23;1Hprint(root / (B[0;1m[32m"src/pages/cart.astro"[39m(B[m)[2d[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[3;1Hs = s.replace(old, new)[5d(B[0;1m[31m# Checkout: send quantities, not just slugs[6d[39m(B[ms = s.replace([7;4H(B[0;1m[32mcart: cart.map((item) => item.slug),'''[2d[39m(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;14H[1K slug: item.slug,[3;14H[1K quantity: item.quantity || 1,[4;12H[1K })),'''[2d(B[m[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[2;24r[24;1H
+[1;26r[2;1H[?12l[?25h[?25l[K[?12l[?25h[?25l[24;70H(B[0;7m[ Nothing was cut ](B[m[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[24;89H[?12l[?25h[2d[?25l[3d(B[0;1m[31m# If the Rosary function was added by the previous command, remove it.[4d[39m(B[mstart = s.find((B[0;1m[32m"function getRosaryPrice(quantity) {"[39m(B[m)[5d(B[0;1m[36mif[39m(B[m start != -1:[6;5Hend = s.find((B[0;1m[32m"function priceToCents(rawPrice) {"[39m(B[m, start)[7;5H(B[0;1m[36mif[39m(B[m end == -1:[8;9H(B[0;1m[36mraise[39m(B[m SystemExit((B[0;1m[32m"Could not find priceToCents()."[39m(B[m)[9;5Hs = s[:start] + s[end:][11dp.write_text(s)[13dprint((B[0;1m[32m"Worker restored to normal per-card pricing:"[39m(B[m, p)[24d[K[13;56H[?12l[?25h[?25l[25;18H[22X[25;40H(B[0;7mM-D(B[m DOS Format    [25;69H          (B[0;7mM-A(B[m Append        [103G        [118G(B[0;7mM-B(B[m Backup File[K[26;2H(B[0;7mC(B[m Cancel[26;18H[22X[26;40H(B[0;7mM-M(B[m Mac Format      [26;69H          (B[0;7mM-P(B[m Prepend[21X[26;118H(B[0;7m^T(B[m Browse[K[24d(B[0;7mFile Name to Write: cart_.py                                                                                                                                  [24;29H(B[m[?12l[?25h[?25l[24;72H[1K (B[0;7m[ Writing... ](B[m[K[1;87H(B[0;7m [157G(B[m[24;71H(B[0;7m[ Wrote 41 lines ](B[m[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is      (B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute       (B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[118G  (B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26;2H(B[0;7mX(B[m Exit  [26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace       (B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify       (B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[118G  (B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[?12l[?25h[13;56H[?25l[24d[J[26d[?12l[?25h[26;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ nano cart_.pypm run build[5Pgit diffcd ~/Desktop/cbmpython3 cart_.py
+[?2004lTraceback (most recent call last):
+  File "/home/steveb/Desktop/cbm/cart_.py", line 4, in <module>
+    s = p.read_text()
+  File "/usr/lib/python3.10/pathlib.py", line 1134, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/usr/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: '/home/steveb/Desktop/cbm/src/index.js'
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ cd ../
+[?2004l[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop[00m$ cd cbm)[K-cart0w[K[K-worker
+[?2004l[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm-cart-worker[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm-cart-worker[00m$ cd cbm-cart-worker../[Kpython3 cart_.py
+[?2004lpython3: can't open file '/home/steveb/Desktop/cbm-cart-worker/cart_.py': [Errno 2] No such file or directory
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm-cart-worker[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm-cart-worker[00m$ nano cart)[K_.py
+[?2004l[?2004h[?1049h[22;0;0t[1;26r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[24;74H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 6.2                                                               cart_.py                                                                         [1;157H(B[m[25d(B[0;7m^G(B[m Help[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is[52G(B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute[86G(B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[25;120H(B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26d(B[0;7m^X(B[m Exit[26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace[52G(B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify[86G(B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[26;120H(B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[2d[?12l[?25h[?25l[1;87H(B[0;7m*[24d(B[m[K[1;157H[3d(B[0;1m[31m# If the Rosary function was added by the previous command, remove it.[4d[39m(B[mstart = s.find((B[0;1m[32m"function getRosaryPrice(quantity) {"[39m(B[m)[5d(B[0;1m[36mif[39m(B[m start != -1:[6;5Hend = s.find((B[0;1m[32m"function priceToCents(rawPrice) {"[39m(B[m, start)[7;5H(B[0;1m[36mif[39m(B[m end == -1:[8;9H(B[0;1m[36mraise[39m(B[m SystemExit((B[0;1m[32m"Could not find priceToCents()."[39m(B[m)[9;5Hs = s[:start] + s[end:][11dp.write_text(s)[13dprint((B[0;1m[32m"Worker restored to normal per-card pricing:"[39m(B[m, p)[?12l[?25h[?25l[?12l[?25h[10d[?25l[?12l[?25h[7;18H[?25l[?12l[?25h[4;54H[?25l[?12l[?25h[2;24r[2;1HM[1;26r[2;5Hs = s.replace(old, new)[?25l[?12l[?25h7[2;24r8[3T[1;26r[2;8H(B[0;1m[32m[1K );'''[4d[36mif[39m(B[m old (B[0;1m[36min[39m(B[m s:[2;14H[?25l[?12l[?25h7[2;24r8[3T[1;26r[3;1Hnew = (B[0;1m[32m'''        const priceCents = priceToCents([4;10H[1K frontmatter.price[2d[39m(B[m[?25l[?12l[?25h7[2;24r8[3T[1;26r[3;10H(B[0;1m[32m[1K priceCents = Math.round(rosaryPrice * 100);[4;8H[1K }'''[2d[39m(B[m[?25l[?12l[?25h7[2;23r8[3T[1;26r[2;14H(B[0;1m[32m[1K `"${title}" is not available for checkout.`[3;12H[1K );[4;10H[1K }[2;56H[39m(B[m[?25l[?12l[?25h7[2;23r8[3T[1;26r[3;10H(B[0;1m[32m[1K if (rosaryPrice <= 0) {[4;12H[1K throw new Error([2d[39m(B[m[?25l[?12l[?25h7[2;23r8[3T[1;26r[2;8H(B[0;1m[32m[1K // Rosary Card uses quantity-based bundle pricing.[3;8H[1K if (slug === "rosary-card") {[4;10H[1K const rosaryPrice = getRosaryPrice(quantity);[2d[39m(B[m[?25l[?12l[?25h7[2;24r8[3T[1;26r[2;10H(B[0;1m[32m[1K frontmatter.price[3;8H[1K );[2;28H[39m(B[m[?25l[?12l[?25h7[2;24r8[3T[1;26r[3;1H(B[0;1m[31m# Replace the existing price calculation with a normal per-card price.[4d[39m(B[mold = (B[0;1m[32m'''        let priceCents = priceToCents([2d[39m(B[m[?25l[?12l[?25h7[2;23r8[3T[1;26r[3;1Hp = Path.home() / (B[0;1m[32m"Desktop/cbm/src/index.js"[4d[39m(B[ms = p.read_text()[2d[?25l[?12l[?25h7[2;24r8M[1;26r[2;1H(B[0;1m[36mfrom[39m(B[m pathlib (B[0;1m[36mimport[39m(B[m Path[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[5;18H[?25l[25;18H[22X[25;40H(B[0;7mM-D(B[m DOS Format    [25;69H          (B[0;7mM-A(B[m Append        [103G        [118G(B[0;7mM-B(B[m Backup File[K[26;2H(B[0;7mC(B[m Cancel[26;18H[22X[26;40H(B[0;7mM-M(B[m Mac Format      [26;69H          (B[0;7mM-P(B[m Prepend[21X[26;118H(B[0;7m^T(B[m Browse[K[24d(B[0;7mFile Name to Write: cart_.py                                                                                                                                  [24;29H(B[m[?12l[?25h[?25l[24;72H[1K (B[0;7m[ Writing... ](B[m[K[1;87H(B[0;7m [157G(B[m[24;71H(B[0;7m[ Wrote 41 lines ](B[m[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is      (B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute       (B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[118G  (B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26;2H(B[0;7mX(B[m Exit  [26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace       (B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify       (B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[118G  (B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[?12l[?25h[5;18H[?25l[24d[J[26d[?12l[?25h[26;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm-cart-worker[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm-cart-worker[00m$ nano cart_.py[3@python3[C[C[C[C[C[C[C[C[C
+[?2004lTraceback (most recent call last):
+  File "/home/steveb/Desktop/cbm-cart-worker/cart_.py", line 4, in <module>
+    s = p.read_text()
+  File "/usr/lib/python3.10/pathlib.py", line 1134, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/usr/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: '/home/steveb/Desktop/cbm/src/index.js'
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm-cart-worker[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm-cart-worker[00m$ cd ../cbm
+[?2004l[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ npm run dev
+[?2004l
+> stephen@0.0.1 dev
+> astro dev
+
+[1G[0K[2m07:37:34[22m [34m[@astrojs/cloudflare][39m Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+[2m07:37:34[22m [34m[@astrojs/cloudflare][39m Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+[2m07:37:34[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[31m[1m07:37:35[22m [ERROR] [vite][39m [31m(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error: [31m  Failed to scan for dependencies from entries:
+  /home/steveb/Desktop/cbm/src/layouts/Layout.astro
+/home/steveb/Desktop/cbm/src/layouts/PageLayout.astro
+/home/steveb/Desktop/cbm/src/pages/about.astro
+/home/steveb/Desktop/cbm/src/pages/artwork.astro
+/home/steveb/Desktop/cbm/src/pages/bio.astro
+/home/steveb/Desktop/cbm/src/pages/cancel.astro
+/home/steveb/Desktop/cbm/src/pages/cart.astro
+/home/steveb/Desktop/cbm/src/pages/contact.astro
+/home/steveb/Desktop/cbm/src/pages/index.astro
+/home/steveb/Desktop/cbm/src/pages/shipping.astro
+/home/steveb/Desktop/cbm/src/pages/special-card.astro
+/home/steveb/Desktop/cbm/src/pages/store.astro
+/home/steveb/Desktop/cbm/src/pages/success.astro
+/home/steveb/Desktop/cbm/src/pages/tos.astro
+/home/steveb/Desktop/cbm/src/pages/artwork/[slug].astro
+
+  [31mBuild failed with 2 errors:
+
+[31m[PARSE_ERROR] [0mUnexpected token
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/pages/artwork.astro:3:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m3 │[0m )[38;5;249m.[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249mp[0m[38;5;249m([0m[38;5;249m([0m[38;5;249m[[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mh[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mm[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249m][0m[38;5;249m)[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249m{[0m
+ [38;5;240m  │[0m ┬  
+ [38;5;240m  │[0m ╰── 
+[38;5;246m───╯[0m
+
+[31m[PARSE_ERROR] [0mUnexpected token
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/pages/artwork/[slug].astro:5:3 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m5 │[0m [38;5;249m [0m[38;5;249m [0m)[38;5;249m;[0m
+ [38;5;240m  │[0m   ┬  
+ [38;5;240m  │[0m   ╰── 
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///home/steveb/Desktop/cbm/node_modules/rolldown/dist/shared/error-T-E9reEy.mjs:48:18)
+    at unwrapBindingResult (file:///home/steveb/Desktop/cbm/node_modules/rolldown/dist/shared/error-T-E9reEy.mjs:18:128)
+    at scan (file:///home/steveb/Desktop/cbm/node_modules/rolldown/dist/experimental-index.mjs:181:3)
+    at async Object.build (file:///home/steveb/Desktop/cbm/node_modules/vite/dist/node/chunks/node.js:30255:3)
+    at async scan (file:///home/steveb/Desktop/cbm/node_modules/vite/dist/node/chunks/node.js:30199:4)
+    at async file:///home/steveb/Desktop/cbm/node_modules/vite/dist/node/chunks/node.js:33217:15[39m
+[2m07:37:36[22m [34m[vite][39m [optimizer] bundling dependencies...
+[2m07:37:37[22m [34m[vite][39m connected.
+[2m07:37:40[22m [34m[vite][39m [32m✨ new dependencies optimized: [33mastro/logger/console[32m[39m
+[2m07:37:40[22m [34m[vite][39m [32m✨ optimized dependencies changed. reloading[39m
+[2m07:37:40[22m [34m[vite][39m [vite] program reload
+[2m07:37:43[22m [34m[types][39m Generated [2m1ms[22m
+[2m07:37:44[22m [34m[content][39m Syncing content
+[2m07:37:44[22m [34m[content][39m Synced content
+[2m07:37:44[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[42m[1m astro [22m[49m [32mv7.3.2[39m [2mready in[22m 11899 [2mms[22m
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [2muse --host to expose[22m
+[2m07:37:44[22m [32mwatching for file changes...[39m
+[2m07:39:50[22m [34m[vite][39m 11:39:50 [200] / 174ms
+[2m07:39:54[22m [34m[vite][39m 11:39:54 [200] /cart/ 86ms
+^C
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mcd ~/Desktop/cbm[27m
+[7mnano src/content/cards/rosary-card.md[27m[A]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ cd ~/Desktop/cbm
+nano src/content/cards/rosary-card.md
+[?2004l[?2004h[?1049h[22;0;0t[1;26r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[24;74H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 6.2                                                   src/content/cards/rosary-card.md                                                             [1;157H(B[m[25d(B[0;7m^G(B[m Help[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is[52G(B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute[86G(B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[25;120H(B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26d(B[0;7m^X(B[m Exit[26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace[52G(B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify[86G(B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[26;120H(B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[2d[?12l[?25h[?25l[1;99H(B[0;7m*[24d(B[m[K[1;157H[2d(B[0;1m[33m---[3d[39m(B[mtitle: Rosary Card[4dprice: 5[5dstatus: Available[6d(B[0;1m[33m---[39m(B[m[?12l[?25h[?25l[25;18H[22X[25;40H(B[0;7mM-D(B[m DOS Format    [25;69H          (B[0;7mM-A(B[m Append        [103G        [118G(B[0;7mM-B(B[m Backup File[K[26;2H(B[0;7mC(B[m Cancel[26;18H[22X[26;40H(B[0;7mM-M(B[m Mac Format      [26;69H          (B[0;7mM-P(B[m Prepend[21X[26;118H(B[0;7m^T(B[m Browse[K[24d(B[0;7mFile Name to Write: src/content/cards/rosary-card.md                                                                                                          [24;53H(B[m[?12l[?25h[?25l[24;72H[1K (B[0;7m[ Writing... ](B[m[K[1;99H(B[0;7m [157G(B[m[24;71H(B[0;7m[ Wrote 5 lines ](B[m[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is      (B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute       (B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[118G  (B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26;2H(B[0;7mX(B[m Exit  [26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace       (B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify       (B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[118G  (B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[?12l[?25h[6;4H[?25l[24d[J[26d[?12l[?25h[26;1H[?1049l[23;0;0t[?1l>[?2004l[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mnpm run build[27mnpm run build
+[?2004l
+> stephen@0.0.1 build
+> astro build
+
+[1G[0K[2m07:41:47[22m [34m[@astrojs/cloudflare][39m Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+[2m07:41:47[22m [34m[@astrojs/cloudflare][39m Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+[2m07:41:48[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[2m07:41:48[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[2m07:41:49[22m [34m[content][39m Syncing content
+[2m07:41:49[22m [34m[content][39m Synced content
+[2m07:41:49[22m [34m[types][39m Generated [2m1.75s[22m
+[2m07:41:49[22m [34m[build][39m output: [34m"static"[39m
+[2m07:41:49[22m [34m[build][39m mode: [34m"static"[39m
+[2m07:41:49[22m [34m[build][39m directory: [34m/home/steveb/Desktop/cbm/dist/[39m
+[2m07:41:49[22m [34m[build][39m adapter: [32m@astrojs/cloudflare[39m
+[2m07:41:49[22m [34m[build][39m Collecting build info...
+[2m07:41:49[22m [34m[build][39m [32m✓ Completed in 1.84s.[39m
+[2m07:41:49[22m [34m[build][39m Building static entrypoints...
+[2m07:41:50[22m [34m[vite][39m [32m✓ built in 656ms[39m
+[2m07:41:50[22m [34m[vite][39m [32m✓ built in 150ms[39m
+[2m07:41:50[22m [34m[build][39m Rearranging server assets...
+
+[42m[30m generating static routes [39m[49m
+[2m07:41:51[22m   [34m├─[39m [2m/about/index.html[22m [2m(+60ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/angels/index.html[22m [2m(+32ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/cat/index.html[22m [2m(+25ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/cows/index.html[22m [2m(+30ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/dogs/index.html[22m [2m(+26ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/fish-3/index.html[22m [2m(+25ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/fish-5/index.html[22m [2m(+20ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/flowers-1/index.html[22m [2m(+24ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/flowers-2/index.html[22m [2m(+24ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/flowers-vase-1/index.html[22m [2m(+23ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/flowers2-1/index.html[22m [2m(+18ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/flowers2-2/index.html[22m [2m(+18ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/flowers3-1/index.html[22m [2m(+19ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/flowers3-4/index.html[22m [2m(+19ms)[22m 
+[2m07:41:51[22m   [34m├─[39m [2m/artwork/flowers4-1/index.html[22m [2m(+18ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/flowers4-3/index.html[22m [2m(+18ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/fruit-plant-1/index.html[22m [2m(+20ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/fruit-plant-2/index.html[22m [2m(+20ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/fruitbowl-1/index.html[22m [2m(+18ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/houses-1/index.html[22m [2m(+18ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/houses-2/index.html[22m [2m(+18ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/houses-3/index.html[22m [2m(+21ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/irish-1/index.html[22m [2m(+23ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/irish-2/index.html[22m [2m(+19ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/irish-3/index.html[22m [2m(+22ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/ladybug-1/index.html[22m [2m(+22ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/leaves-1/index.html[22m [2m(+18ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/leaves-3/index.html[22m [2m(+22ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/sailboats-1/index.html[22m [2m(+18ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/sailboats-3/index.html[22m [2m(+25ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/thanks-1/index.html[22m [2m(+19ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/thanks-4/index.html[22m [2m(+20ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/artwork/index.html[22m [2m(+22ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/bio/index.html[22m [2m(+19ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/cancel/index.html[22m [2m(+16ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/cart/index.html[22m [2m(+20ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/contact/index.html[22m [2m(+20ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/shipping/index.html[22m [2m(+21ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/special-card/index.html[22m [2m(+24ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/store/index.html[22m [2m(+20ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/success/index.html[22m [2m(+20ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/tos/index.html[22m [2m(+22ms)[22m 
+[2m07:41:52[22m   [34m├─[39m [2m/index.html[22m [2m(+23ms)[22m 
+[2m07:41:52[22m [32m✓ Completed in 2.00s.
+[39m
+[2m07:41:52[22m [34m[build][39m [32m✓ Completed in 2.91s.[39m
+[2m07:41:52[22m [34m[@astrojs/cloudflare][39m Injected immutable Cache-Control for /_astro/* into _headers.
+[2m07:41:52[22m [34m[build][39m 43 page(s) built in [1m4.77s[22m
+[2m07:41:52[22m [34m[build][39m [1mComplete![22m
+[1G[0K⠙[1G[0K[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ nom[K[Kp [Km run dev
+[?2004l
+> stephen@0.0.1 dev
+> astro dev
+
+[1G[0K[2m07:46:15[22m [34m[@astrojs/cloudflare][39m Enabling image processing with Cloudflare Images for production with the "IMAGES" Images binding.
+[2m07:46:15[22m [34m[@astrojs/cloudflare][39m Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+[2m07:46:15[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[31m[1m07:46:16[22m [ERROR] [vite][39m [31m(!) Failed to run dependency scan. Skipping dependency pre-bundling. Error: [31m  Failed to scan for dependencies from entries:
+  /home/steveb/Desktop/cbm/src/layouts/Layout.astro
+/home/steveb/Desktop/cbm/src/layouts/PageLayout.astro
+/home/steveb/Desktop/cbm/src/pages/about.astro
+/home/steveb/Desktop/cbm/src/pages/artwork.astro
+/home/steveb/Desktop/cbm/src/pages/bio.astro
+/home/steveb/Desktop/cbm/src/pages/cancel.astro
+/home/steveb/Desktop/cbm/src/pages/cart.astro
+/home/steveb/Desktop/cbm/src/pages/contact.astro
+/home/steveb/Desktop/cbm/src/pages/index.astro
+/home/steveb/Desktop/cbm/src/pages/shipping.astro
+/home/steveb/Desktop/cbm/src/pages/special-card.astro
+/home/steveb/Desktop/cbm/src/pages/store.astro
+/home/steveb/Desktop/cbm/src/pages/success.astro
+/home/steveb/Desktop/cbm/src/pages/tos.astro
+/home/steveb/Desktop/cbm/src/pages/artwork/[slug].astro
+
+  [31mBuild failed with 2 errors:
+
+[31m[PARSE_ERROR] [0mUnexpected token
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/pages/artwork.astro:3:1 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m3 │[0m )[38;5;249m.[0m[38;5;249mm[0m[38;5;249ma[0m[38;5;249mp[0m[38;5;249m([0m[38;5;249m([0m[38;5;249m[[0m[38;5;249mp[0m[38;5;249ma[0m[38;5;249mt[0m[38;5;249mh[0m[38;5;249m,[0m[38;5;249m [0m[38;5;249mm[0m[38;5;249mo[0m[38;5;249md[0m[38;5;249m][0m[38;5;249m)[0m[38;5;249m [0m[38;5;249m=[0m[38;5;249m>[0m[38;5;249m [0m[38;5;249m{[0m
+ [38;5;240m  │[0m ┬  
+ [38;5;240m  │[0m ╰── 
+[38;5;246m───╯[0m
+
+[31m[PARSE_ERROR] [0mUnexpected token
+   [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/pages/artwork/[slug].astro:5:3 [38;5;246m][0m
+   [38;5;246m│[0m
+ [38;5;246m5 │[0m [38;5;249m [0m[38;5;249m [0m)[38;5;249m;[0m
+ [38;5;240m  �
