@@ -22,6 +22,26 @@ import PageLayout from "../layouts/PageLayout.astro";
         <span id="subtotal">$0.00</span>
       </div>
 
+      <div class="promo">
+        <label>
+          <span>Promo code</span>
+          <input
+            id="promo-code"
+            type="text"
+            autocomplete="off"
+            placeholder="Promo code"
+          >
+        </label>
+        <button id="apply-promo" type="button">Apply</button>
+      </div>
+
+      <div id="promo-message" class="promo-message"></div>
+
+      <div id="discount-row" class="shipping" hidden>
+        <span>FALL10 (10% off)</span>
+        <span id="discount-display">-$0.00</span>
+      </div>
+
       <div class="shipping">
         <span>Shipping</span>
         <span>$4.50</span>
@@ -63,6 +83,11 @@ import PageLayout from "../layouts/PageLayout.astro";
   const summaryElement = document.querySelector("#summary");
   const subtotalElement = document.querySelector("#subtotal");
   const totalElement = document.querySelector("#total");
+  const promoCodeInput = document.querySelector("#promo-code");
+  const applyPromoButton = document.querySelector("#apply-promo");
+  const promoMessage = document.querySelector("#promo-message");
+  const discountRow = document.querySelector("#discount-row");
+  const discountDisplay = document.querySelector("#discount-display");
   const taxDisplay = document.querySelector("#tax-display");
   const checkoutButton = document.querySelector("#checkout");
   const taxZip = document.querySelector("#tax-zip");
@@ -87,6 +112,8 @@ import PageLayout from "../layouts/PageLayout.astro";
 
   let currentTaxRate = 0;
   let currentTaxState = "";
+  let promoCode = "";
+  let promoDiscount = 0;
 
   function render() {
     cartElement.innerHTML = "";
@@ -125,10 +152,19 @@ import PageLayout from "../layouts/PageLayout.astro";
       cartElement.appendChild(row);
     });
 
-    const tax = subtotal * currentTaxRate;
-    const total = subtotal + 4.50 + tax;
+    const discountedSubtotal = Math.max(0, subtotal - promoDiscount);
+    const tax = discountedSubtotal * currentTaxRate;
+    const total = discountedSubtotal + 4.50 + tax;
 
     subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+
+    if (promoDiscount > 0) {
+      discountRow.hidden = false;
+      discountDisplay.textContent = `-$${promoDiscount.toFixed(2)}`;
+    } else {
+      discountRow.hidden = true;
+      discountDisplay.textContent = "-$0.00";
+    }
 
     if (currentTaxRate > 0) {
       taxDisplay.textContent = `$${tax.toFixed(2)}`;
@@ -148,6 +184,47 @@ import PageLayout from "../layouts/PageLayout.astro";
       });
     });
   }
+
+  function applyPromo() {
+    const entered = promoCodeInput?.value.trim().toUpperCase() || "";
+
+    if (!entered) {
+      promoCode = "";
+      promoDiscount = 0;
+      promoMessage.textContent = "";
+      render();
+      return;
+    }
+
+    if (entered !== "FALL10") {
+      promoCode = "";
+      promoDiscount = 0;
+      promoMessage.textContent = "Invalid promo code.";
+      render();
+      return;
+    }
+
+    let subtotal = 0;
+
+    cart.forEach((item) => {
+      subtotal += Number(item.price) || 0;
+    });
+
+    promoCode = "FALL10";
+    promoDiscount = Math.round(subtotal * 0.10 * 100) / 100;
+
+    promoMessage.textContent = "Promo code applied.";
+    render();
+  }
+
+  applyPromoButton?.addEventListener("click", applyPromo);
+
+  promoCodeInput?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      applyPromo();
+    }
+  });
 
   let taxTimer;
 
@@ -225,6 +302,8 @@ import PageLayout from "../layouts/PageLayout.astro";
               quantity: item.quantity || 1,
             })),
             zip,
+            promoCode,
+            promoDiscount,
           }),
         }
       );
@@ -320,6 +399,57 @@ import PageLayout from "../layouts/PageLayout.astro";
     text-decoration: underline;
     cursor: pointer;
     font: inherit;
+  }
+
+  .promo {
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+  }
+
+  .promo label {
+    display: grid;
+    gap: 7px;
+    width: 180px;
+    font-size: 0.85rem;
+  }
+
+  .promo input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    background: white;
+    font: inherit;
+    text-transform: uppercase;
+  }
+
+  .promo input:focus {
+    outline: none;
+    border-color: #222;
+  }
+
+  #apply-promo {
+    padding: 11px 14px;
+    border: 1px solid var(--text);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  #apply-promo:hover {
+    transform: translateY(-1px);
+  }
+
+  .promo-message {
+    min-height: 1.4em;
+    padding-top: 6px;
+    font-size: 0.85rem;
   }
 
   #empty {
