@@ -662,4 +662,220 @@ FileNotFoundError: [Errno 2] No such file or directory: '/home/steveb/Desktop/cb
    [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m src/pages/artwork/[slug].astro:5:3 [38;5;246m][0m
    [38;5;246m│[0m
  [38;5;246m5 │[0m [38;5;249m [0m[38;5;249m [0m)[38;5;249m;[0m
- [38;5;240m  �
+ [38;5;240m  │[0m   ┬  
+ [38;5;240m  │[0m   ╰── 
+[38;5;246m───╯[0m
+
+    at aggregateBindingErrorsIntoJsError (file:///home/steveb/Desktop/cbm/node_modules/rolldown/dist/shared/error-T-E9reEy.mjs:48:18)
+    at unwrapBindingResult (file:///home/steveb/Desktop/cbm/node_modules/rolldown/dist/shared/error-T-E9reEy.mjs:18:128)
+    at scan (file:///home/steveb/Desktop/cbm/node_modules/rolldown/dist/experimental-index.mjs:181:3)
+    at async Object.build (file:///home/steveb/Desktop/cbm/node_modules/vite/dist/node/chunks/node.js:30255:3)
+    at async scan (file:///home/steveb/Desktop/cbm/node_modules/vite/dist/node/chunks/node.js:30199:4)
+    at async file:///home/steveb/Desktop/cbm/node_modules/vite/dist/node/chunks/node.js:33217:15[39m
+[2m07:46:17[22m [34m[vite][39m connected.
+[2m07:46:20[22m [34m[vite][39m [32m✨ new dependencies optimized: [33mastro/logger/console[32m[39m
+[2m07:46:20[22m [34m[vite][39m [32m✨ optimized dependencies changed. reloading[39m
+[2m07:46:20[22m [34m[vite][39m [vite] program reload
+[2m07:46:23[22m [34m[types][39m Generated [2m1ms[22m
+[2m07:46:24[22m [34m[content][39m Syncing content
+[2m07:46:24[22m [34m[content][39m Synced content
+[2m07:46:24[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[42m[1m astro [22m[49m [32mv7.3.2[39m [2mready in[22m 11263 [2mms[22m
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [2muse --host to expose[22m
+[2m07:46:24[22m [32mwatching for file changes...[39m
+[2m07:46:28[22m [34m[vite][39m 11:46:28 [200] / 157ms
+[2m07:46:31[22m [34m[vite][39m 11:46:31 [200] /cart/ 72ms
+[2m07:46:40[22m [34m[vite][39m 11:46:40 [200] /cart/ 49ms
+^C
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ git add .
+[?2004l[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ git commit
+[?2004lhint: Waiting for your editor to close the file... [?2004h[?1049h[22;0;0t[1;26r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[24;73H(B[0;7m[ Reading... ](B[m[24;71H(B[0;7m[ Read 14 lines ](B[m[H(B[0;7m  GNU nano 6.2                                             /home/steveb/Desktop/cbm/.git/COMMIT_EDITMSG                                                       [1;157H(B[m[25d(B[0;7m^G(B[m Help[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is[52G(B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute[86G(B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[25;120H(B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26d(B[0;7m^X(B[m Exit[26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace[52G(B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify[86G(B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[26;120H(B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[3d[36m# Please enter the commit message for your changes. Lines starting[4d# with '#' will be ignored, and an empty message aborts the commit.[5d#[6d# On branch master[7d# Your branch is up to date with 'origin/master'.[8d#[9d# Changes to be committed:[10d#[38;5;208m       [36mnew file:   =[11d#[38;5;208m       [36mnew file:   cart_.py[12d#[38;5;208m       [36mnew file:   src/content/cards/rosary-card.md[13d#[38;5;208m       [36mmodified:   src/pages/artwork/[slug].astro[14d#[38;5;208m       [36mmodified:   src/pages/cart.astro[15d#[2d[39m(B[m[?12l[?25h[?25l[1;105H(B[0;7m*[157G(B[m[?12l[?25h[2da[?25l[?12l[?25hd[?25l[?12l[?25hd[?25l[?12l[?25h [?25l[?12l[?25hr[?25l[?12l[?25ho[?25l[?12l[?25hs[?25l[?12l[?25ha[?25l[?12l[?25hr[?25l[?12l[?25hy[?25l[?12l[?25h [?25l[?12l[?25hc[?25l[?12l[?25ha[?25l[?12l[?25hr[?25l[?12l[?25hd[?25l[25;18H[22X[25;40H(B[0;7mM-D(B[m DOS Format    [25;69H          (B[0;7mM-A(B[m Append        [103G        [118G(B[0;7mM-B(B[m Backup File[K[26;2H(B[0;7mC(B[m Cancel[26;18H[22X[26;40H(B[0;7mM-M(B[m Mac Format      [26;69H          (B[0;7mM-P(B[m Prepend[21X[26;118H(B[0;7m^T(B[m Browse[K[24d(B[0;7mFile Name to Write: /home/steveb/Desktop/cbm/.git/COMMIT_EDITMSG                                                                                              [24;65H(B[m[?12l[?25h[?25l[72G[1K (B[0;7m[ Writing... ](B[m[K[1;105H(B[0;7m [157G(B[m[24;71H(B[0;7m[ Wrote 14 lines ](B[m[25;18H(B[0;7m^O(B[m Write Out     (B[0;7m^W(B[m Where Is      (B[0;7m^K(B[m Cut[25;69H(B[0;7m^T(B[m Execute       (B[0;7m^C(B[m Location[103G(B[0;7mM-U(B[m Undo[118G  (B[0;7mM-A(B[m Set Mark     (B[0;7mM-](B[m To Bracket[26;2H(B[0;7mX(B[m Exit  [26;18H(B[0;7m^R(B[m Read File     (B[0;7m^\(B[m Replace       (B[0;7m^U(B[m Paste[26;69H(B[0;7m^J(B[m Justify       (B[0;7m^/(B[m Go To Line    (B[0;7mM-E(B[m Redo[118G  (B[0;7mM-6(B[m Copy[26;137H(B[0;7m^Q(B[m Where Was[?12l[?25h[2;16H[?25l[24d[J[26d[?12l[?25h[26;1H[?1049l[23;0;0t[?1l>[?2004l[K[master 2f86859] add rosary card
+ 5 files changed, 865 insertions(+), 111 deletions(-)
+ create mode 100644 =
+ create mode 100644 cart_.py
+ create mode 100644 src/content/cards/rosary-card.md
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ nom [K[K[Kpx wrnagl[K[K[Kan[K[K[Kangler deploy
+[?2004l[1G[0K⠙[1G[0K
+ ⛅️ wrangler 4.130.0
+[38;2;255;136;0m────────────────────[39m
+Using redirected Wrangler configuration.
+ - Configuration being used: "dist/client/wrangler.json"
+ - Original user's configuration: "wrangler.jsonc"
+ - Deploy configuration file: ".wrangler/deploy/config.json"
+🌀 Building list of assets...
+✨ Read 167 files from the assets directory /home/steveb/Desktop/cbm/dist/client
+🌀 Starting asset upload...
+🌀 Found 32 new or modified static assets to upload. Proceeding with upload...
++ /artwork/cat/index.html
++ /artwork/fish-3/index.html
++ /artwork/irish-2/index.html
++ /artwork/houses-1/index.html
++ /artwork/leaves-1/index.html
++ /artwork/thanks-4/index.html
++ /artwork/ladybug-1/index.html
++ /artwork/flowers3-1/index.html
++ /artwork/flowers4-3/index.html
++ /artwork/sailboats-3/index.html
++ /artwork/flowers-vase-1/index.html
++ /artwork/cows/index.html
++ /artwork/fish-5/index.html
++ /artwork/irish-3/index.html
++ /artwork/houses-2/index.html
++ /artwork/leaves-3/index.html
++ /artwork/flowers-1/index.html
++ /artwork/flowers2-1/index.html
++ /artwork/flowers3-4/index.html
++ /artwork/fruitbowl-1/index.html
++ /artwork/fruit-plant-1/index.html
++ /cart/index.html
++ /artwork/dogs/index.html
++ /artwork/irish-1/index.html
++ /artwork/angels/index.html
++ /artwork/houses-3/index.html
++ /artwork/thanks-1/index.html
++ /artwork/flowers-2/index.html
++ /artwork/flowers2-2/index.html
++ /artwork/flowers4-1/index.html
++ /artwork/sailboats-1/index.html
++ /artwork/fruit-plant-2/index.html
+Uploaded 10 of 32 assets
+Uploaded 21 of 32 assets
+Uploaded 32 of 32 assets
+✨ Success! Uploaded 32 files (87 already uploaded) (1.15 sec)
+
+Total Upload: [32m0.31 KiB / gzip: 0.22 KiB[39m
+Your Worker has access to the following bindings:
+[2mBinding[22m             [2mResource[22m          
+[37menv.SESSION[39m         [38;2;189;91;8mKV Namespace[39m      
+[37menv.IMAGES[39m          [38;2;189;91;8mImages      [39m      
+
+Uploaded cards-by-margaret (4.61 sec)
+Deployed cards-by-margaret triggers (0.65 sec)
+  https://cards-by-margaret.steve-breighner.workers.dev
+Current Version ID: 1d40c34b-24bb-46bf-bce0-22f67057eefd
+[1G[0K⠙[1G[0K[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mgit branch --show-current[27m
+[7mgit ls-tree -r cbm-site --name-only | grep -i rosary[27m[Agit branch --show-current
+git ls-tree -r cbm-site --name-only | grep -i rosary
+[?2004lmaster
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mgit show cbm-site:src/content/cards/rosary-card.md[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit show cbm-site:src/content/cards/rosary-card.md
+[?2004lfatal: path 'src/content/cards/rosary-card.md' exists on disk, but not in 'cbm-site'
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ git switch cm[Kbm0s[K[K0[K-sei[K[Kite
+[?2004lerror: Your local changes to the following files would be overwritten by checkout:
+	=
+Please commit your changes or stash them before you switch branches.
+Aborting
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mcd ~/Desktop/cbm[27m
+
+[7mgit add src/content/cards/rosary-card.md[27m
+[7mgit commit -m "Add Rosary Card"[27m
+[7mgit push origin master[27m
+
+[7mgit checkout cbm-site[27m
+[7mgit checkout master -- src/content/cards/rosary-card.md[27m
+[7mgit add src/content/cards/rosary-card.md[27m
+[7mgit commit -m "Add Rosary Card"[27m
+[7mgit push origin cbm-site[27m
+
+[7mgit checkout master[27m[A[A[A[A[A[A[A[A[A[A[A[A]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ cd ~/Desktop/cbm
+
+git add src/content/cards/rosary-card.md
+git commit -m "Add Rosary Card"
+git push origin master
+
+git checkout cbm-site
+git checkout master -- src/content/cards/rosary-card.md
+git add src/content/cards/rosary-card.md
+git commit -m "Add Rosary Card"
+git push origin cbm-site
+
+git checkout master
+[?2004lOn branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   =[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Enumerating objects: 20, done.
+Counting objects:   5% (1/20)Counting objects:  10% (2/20)Counting objects:  15% (3/20)Counting objects:  20% (4/20)Counting objects:  25% (5/20)Counting objects:  30% (6/20)Counting objects:  35% (7/20)Counting objects:  40% (8/20)Counting objects:  45% (9/20)Counting objects:  50% (10/20)Counting objects:  55% (11/20)Counting objects:  60% (12/20)Counting objects:  65% (13/20)Counting objects:  70% (14/20)Counting objects:  75% (15/20)Counting objects:  80% (16/20)Counting objects:  85% (17/20)Counting objects:  90% (18/20)Counting objects:  95% (19/20)Counting objects: 100% (20/20)Counting objects: 100% (20/20), done.
+Delta compression using up to 4 threads
+Compressing objects:   9% (1/11)Compressing objects:  18% (2/11)Compressing objects:  27% (3/11)Compressing objects:  36% (4/11)Compressing objects:  45% (5/11)Compressing objects:  54% (6/11)Compressing objects:  63% (7/11)Compressing objects:  72% (8/11)Compressing objects:  81% (9/11)Compressing objects:  90% (10/11)Compressing objects: 100% (11/11)Compressing objects: 100% (11/11), done.
+Writing objects:   8% (1/12)Writing objects:  16% (2/12)Writing objects:  25% (3/12)Writing objects:  33% (4/12)Writing objects:  41% (5/12)Writing objects:  50% (6/12)Writing objects:  58% (7/12)Writing objects:  66% (8/12)Writing objects:  75% (9/12)Writing objects:  83% (10/12)Writing objects:  91% (11/12)Writing objects: 100% (12/12)Writing objects: 100% (12/12), 11.96 KiB | 2.99 MiB/s, done.
+Total 12 (delta 6), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas:   0% (0/6)[Kremote: Resolving deltas:  16% (1/6)[Kremote: Resolving deltas:  33% (2/6)[Kremote: Resolving deltas:  50% (3/6)[Kremote: Resolving deltas:  66% (4/6)[Kremote: Resolving deltas:  83% (5/6)[Kremote: Resolving deltas: 100% (6/6)[Kremote: Resolving deltas: 100% (6/6), completed with 6 local objects.[K
+To github.com:stevebreighner/cbm.git
+   2af35cb..2f86859  master -> master
+error: Your local changes to the following files would be overwritten by checkout:
+	=
+Please commit your changes or stash them before you switch branches.
+Aborting
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   =[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Everything up-to-date
+M	=
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mgit show cbm-site:src/content/cards/rosary-card.md[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit show cbm-site:src/content/cards/rosary-card.md
+[?2004lfatal: path 'src/content/cards/rosary-card.md' exists on disk, but not in 'cbm-site'
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mcd ~/Desktop/cbm[27m
+
+[7mcp src/content/cards/rosary-card.md /tmp/rosary-card.md[27m
+
+[7mgit checkout cbm-site[27m
+
+[7mmkdir -p src/content/cards[27m
+[7mcp /tmp/rosary-card.md src/content/cards/rosary-card.md[27m[A[A[A[A[A[A[Acd ~/Desktop/cbm
+
+cp src/content/cards/rosary-card.md /tmp/rosary-card.md
+
+git checkout cbm-site
+
+mkdir -p src/content/cards
+cp /tmp/rosary-card.md src/content/cards/rosary-card.md
+[?2004lerror: Your local changes to the following files would be overwritten by checkout:
+	=
+Please commit your changes or stash them before you switch branches.
+Aborting
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mcd ~/Desktop/cbm[27m
+
+[7mgit checkout master[27m
+[7mgit merge cbm-site[27m
+[7mgit push origin master[27m[A[A[A[A]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ cd ~/Desktop/cbm
+
+git checkout master
+git merge cbm-site
+git push origin master
+[?2004lM	=
+Already on 'master'
+Your branch is up to date with 'origin/master'.
+Already up to date.
+Everything up-to-date
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mgit show master:src/content/cards/rosary-card.md[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit show master:src/content/cards/rosary-card.md'[K
+[?2004l[?1h=---[m
+title: Rosary Card[m
+price: 5[m
+status: Available[m
+---[m
+[K[?1l>[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mgit push origin --delete cbm-site[27m
+[7mgit branch -d cbm-site[27m[A]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ git push origin --delete cbm-site
+git branch -d cbm-site
+[?2004lTo github.com:stevebreighner/cbm.git
+ [31m! [remote rejected][m cbm-site (refusing to delete the current branch: refs/heads/cbm-site)
+[31merror: failed to push some refs to 'github.com:stevebreighner/cbm.git'
+[mDeleted branch cbm-site (was 0e27aa5).
+[?2004h]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ [7mcd ~/Desktop/cbm[27m
+[7mgit push origin --delete cbm-site[27m[A]0;steveb@steveb-MacBookPro: ~/Desktop/cbm[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Desktop/cbm[00m$ cd ~/Desktop/cbm
+git push origin --delete cbm-site
+[?2004lTo github.com:stevebreighner/cbm.git
+ [31m! [remote rejected][m cbm-site (refusing to de
