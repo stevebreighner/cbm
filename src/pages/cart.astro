@@ -39,7 +39,7 @@ import PageLayout from "../layouts/PageLayout.astro";
 
       <div id="discount-row" class="shipping" hidden>
         <!-- <span>FALL10 (10% off)</span> -->
-        <span id="discount-display">-$0.00</span>
+        <span id="discount-display"></span>
       </div>
 
       <div class="shipping">
@@ -159,12 +159,12 @@ import PageLayout from "../layouts/PageLayout.astro";
     subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
 
     if (promoDiscount > 0) {
-      discountRow.hidden = false;
-      discountDisplay.textContent = `-$${promoDiscount.toFixed(2)}`;
-    } else {
-      discountRow.hidden = true;
-      discountDisplay.textContent = "-$0.00";
-    }
+  discountRow.hidden = false;
+  discountDisplay.textContent = `-$${promoDiscount.toFixed(2)}`;
+} else {
+  discountRow.hidden = true;
+  discountDisplay.textContent = "";
+}
 
     if (currentTaxRate > 0) {
       taxDisplay.textContent = `$${tax.toFixed(2)}`;

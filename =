@@ -7562,4 +7562,160 @@ $title
 $header_button = get_field("header_button");
 $header_link = get_field("header_link");
 
-$gallery = get_field("header_gallery");$sub_nav = get_subnav();?><div class="page_feature">        <div class="page_header page_header_product_detail<?php if (count($sub_nav) == 0) { ?> page_header_no_subnav<?php } ?>">                <div class="page_header_inner">                        <div class="page_breadcrumb" role="navigation">                                <div class="fs-row">                                        <div class="fs-cell fs-xl-8 fs-xl-push-1">                                                <div class="page_breadcrumb_inner" role="navigation">                                                        <?php                                                        include_with("navigation/breadcrumb.php", [                                                                "icon_divider" => "angle_right",                                                                "icon_end" => "",                                                                "icon_home" => "home",                                                                "links" => get_breadcrumb()                                                        ]);                                                        ?>                                                </div>                                        </div>                                </div>                        </div>                        <?php if (!empty($title) || !empty($description) || !empty($header_button) || !empty($header_link)) { ?>                        <div class="page_intro">                                <div class="fs-row">                                        <div class="fs-cell fs-xl-8 fs-xl-push-1">                                                <div class="page_intro_inner">                                                        <?php if (!empty($title)) { ?>                                                        <h1 class="page_title" id="page_title" tabindex="-1"><?=text_encode($title)?></h1>                                                        <?php } ?>                                                        <?php if (!empty($description)) { ?>                                                        <p class="page_description" role="heading"><?=text_encode($description)?></p>                                                        <?php } ?>                                                        <?php if (!empty($header_button) || !empty($header_link)) { ?>                                                        <div class="page_intro_cta_wrapper">                                                                <?php if (!empty($header_button)) { ?>                                                                <a href="<?=$header_button["url"]?>" class="page_intro_cta_button"><?=$header_button["title"]?></a>                                                                <?php } ?>                                                                <?php if (!empty($header_link)) { ?>                                                                <a href="<?=$header_link["url"]?>" class="page_intro_cta_link"><?=$header_link["title"]?></a>                                                                <?php } ?>                                                        </div>                                                        <?php } ?>                                                </div>                                        </div>                                </div>                        </div>                        <?php } ?>                        <?php if (!empty($gallery)) { ?>                        <div class="page_intro_gallery">                                <div class="fs-row">                                        <div class="fs-cell">                                                <div class="page_intro_gallery_inner js-carousel" data-carousel-options='{"pagination": false, "contained": false, "matchWidth": false}'>                                                        <?php foreach ($gallery as $item) { ?>                                                        <div class="page_intro_gallery_item">                                                                <figure class="page_intro_gallery_item_figure">                                                                        <?php                                                                        include_with("image.php", [                                                                                "class" => "page_intro_gallery",                                                                                "alt" => $item["image"]["alt"],                                                                                "image" => $item["image"],                                                                                "loading" => "eager",                                                                                "sources" => [                                                                                        "classic-med",                                                                                        "classic-sml",                                                                                        "classic-xsml",                                                                                        "classic-xxsml"                                                                                ]                                                                        ]);                                                                        ?>                                                                </figure>                                                        </div>                                                        <?php } ?>                                                </div>                                        </div>                                </div>                        </div>                        <?php } ?>                        <?php if (count($sub_nav)) { ?>                        <div class="page_nav">                                <div class="fs-row">                                        <div class="fs-cell fs-xl-8 fs-xl-push-1">                                                <div class="page_nav_inner">                                                        <a class="skip_link skip_subnav" id="skip_sub_link" href="#page_content">Skip Sub Navigation</a>                                                        <?php                                                        include_with("navigation/sub.php", ["links" => $sub_nav]);                                                        ?>                                                </div>                                        </div>                                </div>                        </div>                        <?php } ?>                </div>                <div class="page_header_circles"></div>                <div class="page_header_lines"></div>        </div>[7m        <div class="page_header_slant"></div>[27m[7m</div>[27m[7m<?php[27m[7m$components = get_field("full_width");[27m[7mif (is_array($components) && count($components)) {[27m[7m?>[27m[7m<div class="full_width_callouts" id="skip_content" tabindex="-1">[27m[7m        <?php[27m[7m        foreach ($components as $component) {[27m[7m                include_with([27m[7m                        THEME_ROOT . "templates/components/" . $c
+$gallery = get_field("header_gallery");$sub_nav = get_subnav();?><div class="page_feature">        <div class="page_header page_header_product_detail<?php if (count($sub_nav) == 0) { ?> page_header_no_subnav<?php } ?>">                <div class="page_header_inner">                        <div class="page_breadcrumb" role="navigation">                                <div class="fs-row">                                        <div class="fs-cell fs-xl-8 fs-xl-push-1">                                                <div class="page_breadcrumb_inner" role="navigation">                                                        <?php                                                        include_with("navigation/breadcrumb.php", [                                                                "icon_divider" => "angle_right",                                                                "icon_end" => "",                                                                "icon_home" => "home",                                                                "links" => get_breadcrumb()                                                        ]);                                                        ?>                                                </div>                                        </div>                                </div>                        </div>                        <?php if (!empty($title) || !empty($description) || !empty($header_button) || !empty($header_link)) { ?>                        <div class="page_intro">                                <div class="fs-row">                                        <div class="fs-cell fs-xl-8 fs-xl-push-1">                                                <div class="page_intro_inner">                                                        <?php if (!empty($title)) { ?>                                                        <h1 class="page_title" id="page_title" tabindex="-1"><?=text_encode($title)?></h1>                                                        <?php } ?>                                                        <?php if (!empty($description)) { ?>                                                        <p class="page_description" role="heading"><?=text_encode($description)?></p>                                                        <?php } ?>                                                        <?php if (!empty($header_button) || !empty($header_link)) { ?>                                                        <div class="page_intro_cta_wrapper">                                                                <?php if (!empty($header_button)) { ?>                                                                <a href="<?=$header_button["url"]?>" class="page_intro_cta_button"><?=$header_button["title"]?></a>                                                                <?php } ?>                                                                <?php if (!empty($header_link)) { ?>                                                                <a href="<?=$header_link["url"]?>" class="page_intro_cta_link"><?=$header_link["title"]?></a>                                                                <?php } ?>                                                        </div>                                                        <?php } ?>                                                </div>                                        </div>                                </div>                        </div>                        <?php } ?>                        <?php if (!empty($gallery)) { ?>                        <div class="page_intro_gallery">                                <div class="fs-row">                                        <div class="fs-cell">                                                <div class="page_intro_gallery_inner js-carousel" data-carousel-options='{"pagination": false, "contained": false, "matchWidth": false}'>                                                        <?php foreach ($gallery as $item) { ?>                                                        <div class="page_intro_gallery_item">                                                                <figure class="page_intro_gallery_item_figure">                                                                        <?php                                                                        include_with("image.php", [                                                                                "class" => "page_intro_gallery",                                                                                "alt" => $item["image"]["alt"],                                                                                "image" => $item["image"],                                                                                "loading" => "eager",                                                                                "sources" => [                                                                                        "classic-med",                                                                                        "classic-sml",                                                                                        "classic-xsml",                                                                                        "classic-xxsml"                                                                                ]                                                                        ]);                                                                        ?>                                                                </figure>                                                        </div>                                                        <?php } ?>                                                </div>                                        </div>                                </div>                        </div>                        <?php } ?>                        <?php if (count($sub_nav)) { ?>                        <div class="page_nav">                                <div class="fs-row">                                        <div class="fs-cell fs-xl-8 fs-xl-push-1">                                                <div class="page_nav_inner">                                                        <a class="skip_link skip_subnav" id="skip_sub_link" href="#page_content">Skip Sub Navigation</a>                                                        <?php                                                        include_with("navigation/sub.php", ["links" => $sub_nav]);                                                        ?>                                                </div>                                        </div>                                </div>                        </div>                        <?php } ?>                </div>                <div class="page_header_circles"></div>                <div class="page_header_lines"></div>        </div>[7m        <div class="page_header_slant"></div>[27m[7m</div>[27m[7m<?php[27m[7m$components = get_field("full_width");[27m[7mif (is_array($components) && count($components)) {[27m[7m?>[27m[7m<div class="full_width_callouts" id="skip_content" tabindex="-1">[27m[7m        <?php[27m[7m        foreach ($components as $component) {[27m[7m                include_with([27m[7m                        THEME_ROOT . "templates/components/" . $component["acf_f[27m[7mc_layout"] . ".php",[27m[7m                        $component[27m[7m                );[27m[7m        }[27m[7m        ?>[27m[7m</div>[27m[7m<?php[27m[7m}[27m[7m?>[27m[7m<?php get_footer(); ?>[27m[7mPHP[27m        <div class="page_header_slant"></div></div><?php$components = get_field("full_width");if (is_array($components) && count($components)) {?><div class="full_width_callouts" id="skip_content" tabindex="-1">        <?php        foreach ($components as $component) {                include_with(                        THEME_ROOT . "templates/components/" . $component["acf_fc_layout"] . ".php",                        $component                );        }        ?></div><?php}?><?php get_footer(); ?>PHP
+[?2004l[?2004h]0;steveb@steveb-MacBookPro: ~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[00m$ cd .[K[K[K[K[K[A]0;steveb@steveb-MacBookPro: ~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Local Sites/bte-technologies/app/public/wp-content/th
+emes/primary[00m$ [7mcd ~/Local\ Sites/bte-technologies/app/public/wp-content/themes/[27m
+[7mprimary[27m
+
+[7msed -n '1,70p' templates/partials/image.php[27m[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd ~/Local\ Sites/bte-technologies/app/public/wp-content/themes/
+primary
+
+sed -n '1,70p' templates/partials/image.php
+[?2004l<?php
+	namespace Framework;
+
+	/**
+	 * @global string $alt
+	 * @global string $class
+	 * @global array $image
+	 * @global string $itemprop
+	 * @global array $sources
+	 */
+
+	if (empty($alt)) {
+		$alt = "";
+	}
+
+	if (!empty($sources)) {
+		global $image_sizes;
+
+		$srcset = [];
+		$source = null;
+
+		foreach ($sources as $source) {
+			$image_url = get_image_size($image, $source, true);
+
+			if ($image_url) {
+				$srcset[] =  $image_url." ".$image_sizes[$source][0]."w";
+			}
+		}
+
+		$srcset = implode(", ", $srcset);
+		$default_size = get_image_size($image, $source);
+	}
+?>
+<img class="<?=$class?>_image lazy "<?php if (count($sources) > 1) { ?> srcset="<?=$srcset?>" <?php } ?><?php if (isset($sizes)) { ?> sizes="<?=implode(", ", $sizes)?>"<?php } ?> data-src = "<?=$default_size?>" src="<?=$default_size?>" width="<?=$width?> " height="<?=$height?> "  loading= "lazy" alt="<?=$alt?>" >
+[?2004h]0;steveb@steveb-MacBookPro: ~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[00m$ [7mgrep -R 'include_with("image.php"' -n ~/Local\ Sites/bte-technol[27m[7mo[27m[7mgies/app/public/wp-content/themes/primary[27m[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgrep -R 'include_with("image.php"' -n ~/Local\ Sites/bte-technologies/app/public/wp-content/themes/primary
+[?2004l[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/single-people.php[m[K[36m[K:[m[K[32m[K74[m[K[36m[K:[m[K						[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/single-events.php[m[K[36m[K:[m[K[32m[K60[m[K[36m[K:[m[K						[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/page-product.php[m[K[36m[K:[m[K[32m[K121[m[K[36m[K:[m[K								[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/testimonial_cards.php[m[K[36m[K:[m[K[32m[K108[m[K[36m[K:[m[K								[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/media_gallery.php[m[K[36m[K:[m[K[32m[K74[m[K[36m[K:[m[K											[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/media_gallery.php[m[K[36m[K:[m[K[32m[K136[m[K[36m[K:[m[K														[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/media_gallery.php[m[K[36m[K:[m[K[32m[K149[m[K[36m[K:[m[K														[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/media_gallery.php[m[K[36m[K:[m[K[32m[K165[m[K[36m[K:[m[K													[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/topic_row.php[m[K[36m[K:[m[K[32m[K48[m[K[36m[K:[m[K									[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/testimonial.php[m[K[36m[K:[m[K[32m[K26[m[K[36m[K:[m[K								[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/testimonials.php[m[K[36m[K:[m[K[32m[K108[m[K[36m[K:[m[K								[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/contact_info.php[m[K[36m[K:[m[K[32m[K80[m[K[36m[K:[m[K								[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/joule_applications.php[m[K[36m[K:[m[K[32m[K44[m[K[36m[K:[m[K								[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/home_feature.php[m[K[36m[K:[m[K[32m[K59[m[K[36m[K:[m[K								[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/product_selector.php[m[K[36m[K:[m[K[32m[K71[m[K[36m[K:[m[K									[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/joule_overview.php[m[K[36m[K:[m[K[32m[K30[m[K[36m[K:[m[K						[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/product_form.php[m[K[36m[K:[m[K[32m[K11[m[K[36m[K:[m[K							[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/related_news_copy.php[m[K[36m[K:[m[K[32m[K92[m[K[36m[K:[m[K									[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/related_news_copy.php[m[K[36m[K:[m[K[32m[K113[m[K[36m[K:[m[K									[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/joule_buyers_guide.php[m[K[36m[K:[m[K[32m[K18[m[K[36m[K:[m[K						[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/featured_article.php[m[K[36m[K:[m[K[32m[K21[m[K[36m[K:[m[K							[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/joule_reports.php[m[K[36m[K:[m[K[32m[K31[m[K[36m[K:[m[K									[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/related_news.php[m[K[36m[K:[m[K[32m[K92[m[K[36m[K:[m[K									[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/related_news.php[m[K[36m[K:[m[K[32m[K113[m[K[36m[K:[m[K									[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/therapy_spark.php[m[K[36m[K:[m[K[32m[K59[m[K[36m[K:[m[K										[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/therapy_spark.php[m[K[36m[K:[m[K[32m[K131[m[K[36m[K:[m[K								[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/joule_hero.php[m[K[36m[K:[m[K[32m[K28[m[K[36m[K:[m[K						[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/components/joule_hero.php[m[K[36m[K:[m[K[32m[K50[m[K[36m[K:[m[K							[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/partials/news-feature.php[m[K[36m[K:[m[K[32m[K32[m[K[36m[K:[m[K							[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/partials/event-item.php[m[K[36m[K:[m[K[32m[K27[m[K[36m[K:[m[K				[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/partials/page-header-bg.php[m[K[36m[K:[m[K[32m[K85[m[K[36m[K:[m[K							[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/partials/entity-item.php[m[K[36m[K:[m[K[32m[K45[m[K[36m[K:[m[K				[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/partials/news-item.php[m[K[36m[K:[m[K[32m[K24[m[K[36m[K:[m[K				[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/partials/news-list.php[m[K[36m[K:[m[K[32m[K47[m[K[36m[K:[m[K											[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/templates/partials/news-list.php[m[K[36m[K:[m[K[32m[K68[m[K[36m[K:[m[K											[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/page-product-joule.php[m[K[36m[K:[m[K[32m[K382[m[K[36m[K:[m[K                                    [01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/single-news.php[m[K[36m[K:[m[K[32m[K104[m[K[36m[K:[m[K								[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/single-news.php[m[K[36m[K:[m[K[32m[K276[m[K[36m[K:[m[K									[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/page-product-type.php[m[K[36m[K:[m[K[32m[K82[m[K[36m[K:[m[K										[01;31m[Kinclude_with("image.php"[m[K, [
+[35m[K/home/steveb/Local Sites/bte-technologies/app/public/wp-content/themes/primary/archive-product.php[m[K[36m[K:[m[K[32m[K65[m[K[36m[K:[m[K										[01;31m[Kinclude_with("image.php"[m[K, [
+[?2004h]0;steveb@steveb-MacBookPro: ~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h]0;steveb@steveb-MacBookPro: ~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[00m$ [7msed -n '490,530p' ~/Local\ Sites/bte-technologies/app/public/wp-[27m[7mc[27m[7montent/themes/primary/inc/helpers.php[27m[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csed -n '490,530p' ~/Local\ Sites/bte-technologies/app/public/wp-content/themes/primary/inc/helpers.php
+[?2004l		return $return;
+	}
+
+	function include_with(string $path, array $variables = []): void
+	{
+		foreach ($variables as $key => $value) {
+			$$key = $value;
+		}
+
+		// Path checking for a bunch of relative directories
+		if (!file_exists($path)) {
+			if (file_exists(get_stylesheet_directory()."/".$path)) {
+				$path = get_stylesheet_directory()."/".$path;
+			} elseif (file_exists(get_stylesheet_directory()."/templates/".$path)) {
+				$path = get_stylesheet_directory()."/templates/".$path;
+			} elseif (file_exists(get_stylesheet_directory()."/templates/partials/".$path)) {
+				$path = get_stylesheet_directory()."/templates/partials/".$path;
+			} elseif (file_exists(THEME_ROOT."templates/".$path)) {
+				$path = THEME_ROOT."templates/".$path;
+			} else {
+				$path = THEME_ROOT."templates/partials/".$path;
+			}
+		}
+
+		if (file_exists($path)) {
+			include $path;
+		} else {
+			trigger_error("File does not exist: $path", E_USER_ERROR);
+		}
+	}
+
+	function icon(string $name): void
+	{
+		$modified_time = filemtime(THEME_ROOT."static-html/images/icons.svg") ?: "1.0.0";
+?>
+<svg class="icon icon_<?=$name?>" role="presentation"><use xlink:href="<?=STATIC_ROOT?>images/icons.svg?<?=$modified_time?>#<?=$name?>"></use></svg>
+<?php
+	}
+
+	function register_post_type($type, $options)
+	{
+[?2004h]0;steveb@steveb-MacBookPro: ~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[00m$ [7msed -n '375,392p' ~/Local\ Sites/bte-technologies/app/public/wp-[27m[7mc[27m[7montent/themes/primary/page-product-joule.php[27m[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csed -n '375,392p' ~/Local\ Sites/bte-technologies/app/public/wp-content/themes/primary/page-product-joule.php
+[?2004l                        <div class="joule_content_block">
+
+                            <?php if (!empty($image)) { ?>
+
+                                <div class="joule_content_image">
+
+                                    <?php
+                                    include_with("image.php", [
+                                        "class" => "joule_content",
+                                        "alt" => $image_alt ?: $section_title,
+                                        "image" => $image,
+                                        "loading" => "lazy"
+                                    ]);
+                                    ?>
+
+                                </div>
+
+                            <?php } ?>
+[?2004h]0;steveb@steveb-MacBookPro: ~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[01;32msteveb@steveb-MacBookPro[00m:[01;34m~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[00m$ internet
+[?2004l🔄 Resetting NetworkManager and Wi-Fi...
+[sudo] password for steveb: *********         
+Compu     
+✅ Reconnected to: Auto MOTOC032
+CDEVICE    TYPE      STATE        CONNECTION    
+[32mwlp2s0[0m    [32mwifi[0m      [32mconnected[0m    [32mAuto MOTOC032[0m 
+[2menp1s0f0[0m  [2methernet[0m  [2munavailable[0m  [2m--[0m            
+[2mlo[0m        [2mloopback[0m  [2munmanaged[0m    [2m--[0m            
+✅ Wi-Fi reset complete.
+[?2004h]0;steveb@steveb-MacBookPro: ~/Local Sites/bte-technologies/app/public/wp-content/themes/primary[01;32msteveb@steve
